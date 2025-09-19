@@ -17,6 +17,7 @@ namespace DAL.EF.Tables
         [ForeignKey("User")]
         public int UserId { get; set; }
 
+        [Index(IsUnique = true)]
         [Required]
         [StringLength(20)]
         [Column(TypeName = "VARCHAR")]

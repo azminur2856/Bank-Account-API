@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class AccountRepo : IRepo<Account, string, Account>
+    internal class AccountRepo : IRepo<Account, string, Account>, IAccountFeatures
     {
         BANKContext db;
         public AccountRepo()
@@ -39,6 +39,13 @@ namespace DAL.Repos
         public List<Account> Get()
         {
             return db.Accounts.ToList();
+        }
+
+        public Account GetLastAccount()
+        {
+            return db.Accounts
+                     .OrderByDescending(a => a.AccountNumber)
+                     .FirstOrDefault();
         }
 
         public Account Update(Account obj)

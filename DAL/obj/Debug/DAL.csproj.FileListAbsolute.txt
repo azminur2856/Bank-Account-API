@@ -12,3 +12,4 @@ C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\DAL\bin
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\DAL\obj\Debug\DAL.csproj.Up2Date
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\DAL\obj\Debug\DAL.Migrations.InitBankAccountAPIDb.resources
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\DAL\obj\Debug\DAL.Migrations.UpdateAccountTable.resources

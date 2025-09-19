@@ -21,6 +21,11 @@ namespace DAL
             return new AccountRepo();
         }
 
+        public static IAccountFeatures AccountFeaturesData()
+        {
+            return new AccountRepo();
+        }
+
         public static IRepo<Transaction, int, bool> TransactionData()
         {
             return new TransactionRepo();

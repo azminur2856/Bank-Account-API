@@ -59,10 +59,15 @@
     <Compile Include="EF\Tables\Transaction.cs" />
     <Compile Include="EF\Tables\User.cs" />
     <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Interfaces\IAccountFeatures.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Migrations\202509191506315_InitBankAccountAPIDb.cs" />
     <Compile Include="Migrations\202509191506315_InitBankAccountAPIDb.Designer.cs">
       <DependentUpon>202509191506315_InitBankAccountAPIDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202509192040343_UpdateAccountTable.cs" />
+    <Compile Include="Migrations\202509192040343_UpdateAccountTable.Designer.cs">
+      <DependentUpon>202509192040343_UpdateAccountTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,6 +84,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202509191506315_InitBankAccountAPIDb.resx">
       <DependentUpon>202509191506315_InitBankAccountAPIDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509192040343_UpdateAccountTable.resx">
+      <DependentUpon>202509192040343_UpdateAccountTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

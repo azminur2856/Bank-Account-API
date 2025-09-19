@@ -67,3 +67,12 @@ C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\obj
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\obj\Debug\API.csproj.Up2Date
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\obj\Debug\API.dll
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\obj\Debug\API.pdb
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\EntityFramework.dll
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\EntityFramework.SqlServer.dll
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\AutoMapper.dll
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\DAL.dll
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\EntityFramework.xml
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\EntityFramework.SqlServer.xml
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\AutoMapper.xml
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\DAL.pdb
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\DAL.dll.config

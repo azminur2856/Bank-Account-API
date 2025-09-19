@@ -7,3 +7,8 @@ C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\obj
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\obj\Debug\BLL.csproj.Up2Date
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\obj\Debug\BLL.dll
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\obj\Debug\BLL.pdb
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\bin\Debug\AutoMapper.dll
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\bin\Debug\EntityFramework.dll
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\bin\Debug\DAL.dll.config
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\bin\Debug\AutoMapper.xml
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\bin\Debug\EntityFramework.xml
