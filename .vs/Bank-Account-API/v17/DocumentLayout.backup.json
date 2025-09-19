@@ -3,12 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\dal\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|solutionrelative:dal\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\dal\\migrations\\202509191506315_initbankaccountapidb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|solutionrelative:dal\\migrations\\202509191506315_initbankaccountapidb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F1F74ED-14A6-4247-9D52-410FC8490CDF}|BLL\\BLL.csproj|C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\bll\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F1F74ED-14A6-4247-9D52-410FC8490CDF}|BLL\\BLL.csproj|solutionrelative:bll\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\dal\\migrations\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|solutionrelative:dal\\migrations\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\dal\\ef\\tables\\token.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|solutionrelative:dal\\ef\\tables\\token.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\dal\\ef\\tables\\auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|solutionrelative:dal\\ef\\tables\\auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\dal\\ef\\tables\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|solutionrelative:dal\\ef\\tables\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\dal\\ef\\tables\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|solutionrelative:dal\\ef\\tables\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\dal\\ef\\tables\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|solutionrelative:dal\\ef\\tables\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9421990-2A22-4714-A007-55F06E1BC271}|API\\API.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\api\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{C9421990-2A22-4714-A007-55F06E1BC271}|API\\API.csproj|solutionrelative:api\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\dal\\ef\\bankcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|solutionrelative:dal\\ef\\bankcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,27 +59,119 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\Class1.cs",
-              "RelativeDocumentMoniker": "DAL\\Class1.cs",
-              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\Class1.cs",
-              "RelativeToolTip": "DAL\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Title": "202509191506315_InitBankAccountAPIDb.cs",
+              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\Migrations\\202509191506315_InitBankAccountAPIDb.cs",
+              "RelativeDocumentMoniker": "DAL\\Migrations\\202509191506315_InitBankAccountAPIDb.cs",
+              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\Migrations\\202509191506315_InitBankAccountAPIDb.cs",
+              "RelativeToolTip": "DAL\\Migrations\\202509191506315_InitBankAccountAPIDb.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T15:09:06.432Z",
+              "WhenOpened": "2025-09-19T15:06:45.396Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\BLL\\Class1.cs",
-              "RelativeDocumentMoniker": "BLL\\Class1.cs",
-              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\BLL\\Class1.cs",
-              "RelativeToolTip": "BLL\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Configuration.cs",
+              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\Migrations\\Configuration.cs",
+              "RelativeDocumentMoniker": "DAL\\Migrations\\Configuration.cs",
+              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\Migrations\\Configuration.cs",
+              "RelativeToolTip": "DAL\\Migrations\\Configuration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T15:08:40.013Z"
+              "WhenOpened": "2025-09-19T15:04:56.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Token.cs",
+              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\Tables\\Token.cs",
+              "RelativeDocumentMoniker": "DAL\\EF\\Tables\\Token.cs",
+              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\Tables\\Token.cs",
+              "RelativeToolTip": "DAL\\EF\\Tables\\Token.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T14:59:08.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuditLog.cs",
+              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\Tables\\AuditLog.cs",
+              "RelativeDocumentMoniker": "DAL\\EF\\Tables\\AuditLog.cs",
+              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\Tables\\AuditLog.cs",
+              "RelativeToolTip": "DAL\\EF\\Tables\\AuditLog.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwBEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T14:59:01.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\Tables\\Transaction.cs",
+              "RelativeDocumentMoniker": "DAL\\EF\\Tables\\Transaction.cs",
+              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\Tables\\Transaction.cs",
+              "RelativeToolTip": "DAL\\EF\\Tables\\Transaction.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowBcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T14:58:30.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\Tables\\User.cs",
+              "RelativeDocumentMoniker": "DAL\\EF\\Tables\\User.cs",
+              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\Tables\\User.cs",
+              "RelativeToolTip": "DAL\\EF\\Tables\\User.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwCAAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T14:54:12.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Account.cs",
+              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\Tables\\Account.cs",
+              "RelativeDocumentMoniker": "DAL\\EF\\Tables\\Account.cs",
+              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\Tables\\Account.cs",
+              "RelativeToolTip": "DAL\\EF\\Tables\\Account.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAA9wBIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T14:51:31.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\API\\Web.config",
+              "RelativeDocumentMoniker": "API\\Web.config",
+              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\API\\Web.config",
+              "RelativeToolTip": "API\\Web.config",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAAAD4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-09-19T14:41:24.176Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BANKContext.cs",
+              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\BANKContext.cs",
+              "RelativeDocumentMoniker": "DAL\\EF\\BANKContext.cs",
+              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\BANKContext.cs",
+              "RelativeToolTip": "DAL\\EF\\BANKContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T12:45:24.085Z",
+              "EditorCaption": ""
             }
           ]
         }
