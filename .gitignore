@@ -1,0 +1,2 @@
+# Ignore secretsettings.json in BLL
+BLL/secretsettings.json
