@@ -25,9 +25,15 @@ namespace DAL.EF.Tables
         public string Email { get; set; }
 
         [Required]
+        public bool IsEmailVerified { get; set; } = false;
+
+        [Required]
         [StringLength(15)]
         [Column(TypeName = "VARCHAR")]
         public string PhoneNumber { get; set; }
+
+        [Required]
+        public bool IsPhoneNumberVerified { get; set; } = false;
 
         [Required]
         [Column(TypeName = "VARCHAR")]
@@ -35,6 +41,9 @@ namespace DAL.EF.Tables
 
         [Required]
         public UserRole Role { get; set; }
+
+        [Required]
+        public bool IsActive { get; set; } = false;
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
@@ -47,5 +56,7 @@ namespace DAL.EF.Tables
         public virtual List<AuditLog> AuditLogs { get; set; }
 
         public virtual List<Token> Tokens { get; set; }
+
+        public virtual List<Verification> Verifications { get; set; }
     }
 }

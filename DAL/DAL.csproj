@@ -58,6 +58,7 @@
     <Compile Include="EF\Tables\Token.cs" />
     <Compile Include="EF\Tables\Transaction.cs" />
     <Compile Include="EF\Tables\User.cs" />
+    <Compile Include="EF\Tables\Verification.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Interfaces\IAccountFeatures.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
@@ -68,6 +69,14 @@
     <Compile Include="Migrations\202509192040343_UpdateAccountTable.cs" />
     <Compile Include="Migrations\202509192040343_UpdateAccountTable.Designer.cs">
       <DependentUpon>202509192040343_UpdateAccountTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202509201848402_AddVerificationAndUpdateUser.cs" />
+    <Compile Include="Migrations\202509201848402_AddVerificationAndUpdateUser.Designer.cs">
+      <DependentUpon>202509201848402_AddVerificationAndUpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202509201912045_FixAccountRelationships.cs" />
+    <Compile Include="Migrations\202509201912045_FixAccountRelationships.Designer.cs">
+      <DependentUpon>202509201912045_FixAccountRelationships.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,6 +96,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202509192040343_UpdateAccountTable.resx">
       <DependentUpon>202509192040343_UpdateAccountTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509201848402_AddVerificationAndUpdateUser.resx">
+      <DependentUpon>202509201848402_AddVerificationAndUpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509201912045_FixAccountRelationships.resx">
+      <DependentUpon>202509201912045_FixAccountRelationships.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

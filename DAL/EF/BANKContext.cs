@@ -15,5 +15,23 @@ namespace DAL.EF
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
         public DbSet<Token> Tokens { get; set; }
+
+        // Use for prevents EF to create shadow properties of User in Account like User_UserId
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Account>()
+                .HasRequired(a => a.User)
+                .WithMany(u => u.Accounts)
+                .HasForeignKey(a => a.UserId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Account>()
+                .HasOptional(a => a.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(a => a.CreatedBy)
+                .WillCascadeOnDelete(false);
+        }
     }
 }

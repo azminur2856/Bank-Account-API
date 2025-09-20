@@ -13,6 +13,14 @@ namespace DAL.Enums
         Customer
     }
 
+    public enum VerificationType
+    {
+        RegistrationVerification = 1,
+        PhoneVerification,
+        EmailVerification,
+        PasswordReset
+    }
+
     public enum TransactionType
     {
         Deposit = 1,
