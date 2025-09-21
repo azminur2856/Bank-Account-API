@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\dal\\migrations\\202509211624299_updateaccounttabletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|solutionrelative:dal\\migrations\\202509211624299_updateaccounttabletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\dal\\migrations\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{830AC2EB-1CAE-4D63-96DA-C36E8E3B9323}|DAL\\DAL.csproj|solutionrelative:dal\\migrations\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -67,6 +71,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "202509211624299_UpdateAccountTableType.cs",
+              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\Migrations\\202509211624299_UpdateAccountTableType.cs",
+              "RelativeDocumentMoniker": "DAL\\Migrations\\202509211624299_UpdateAccountTableType.cs",
+              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\Migrations\\202509211624299_UpdateAccountTableType.cs",
+              "RelativeToolTip": "DAL\\Migrations\\202509211624299_UpdateAccountTableType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T16:24:34.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Configuration.cs",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\Migrations\\Configuration.cs",
               "RelativeDocumentMoniker": "DAL\\Migrations\\Configuration.cs",
@@ -79,7 +96,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "202509192040343_UpdateAccountTable.cs",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\Migrations\\202509192040343_UpdateAccountTable.cs",
               "RelativeDocumentMoniker": "DAL\\Migrations\\202509192040343_UpdateAccountTable.cs",
@@ -92,7 +109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AccountDTO.cs",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\BLL\\DTOs\\AccountDTO.cs",
               "RelativeDocumentMoniker": "BLL\\DTOs\\AccountDTO.cs",
@@ -105,7 +122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Enums.cs",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\Enums\\Enums.cs",
               "RelativeDocumentMoniker": "DAL\\Enums\\Enums.cs",
@@ -118,7 +135,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Verification.cs",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\Tables\\Verification.cs",
               "RelativeDocumentMoniker": "DAL\\EF\\Tables\\Verification.cs",
@@ -131,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Account.cs",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\DAL\\EF\\Tables\\Account.cs",
               "RelativeDocumentMoniker": "DAL\\EF\\Tables\\Account.cs",
@@ -144,7 +161,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\BLL\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "BLL\\Services\\UserService.cs",
@@ -157,7 +174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\UserController.cs",
@@ -169,7 +186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ServiceFactory.cs",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\BLL\\ServiceFactory.cs",
               "RelativeDocumentMoniker": "BLL\\ServiceFactory.cs",
@@ -181,7 +198,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Global.asax.cs",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\API\\Global.asax.cs",
               "RelativeDocumentMoniker": "API\\Global.asax.cs",
@@ -193,7 +210,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": ".env",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\API\\.env",
               "RelativeDocumentMoniker": "API\\.env",
