@@ -1,4 +1,5 @@
 ﻿using BLL.DTOs;
+using BLL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    public class EmailService
+    internal class EmailService : IEmailService
     {
         private readonly EmailSecretDTO secret;
 

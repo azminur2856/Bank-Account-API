@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace BLL.Interfaces
 {
-    public class Class1
+    public interface IEmailService
     {
+        void SendEmail(string to, string subject, string body);
     }
 }

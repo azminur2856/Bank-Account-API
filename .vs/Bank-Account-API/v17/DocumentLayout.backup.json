@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C9421990-2A22-4714-A007-55F06E1BC271}|API\\API.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\api\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9421990-2A22-4714-A007-55F06E1BC271}|API\\API.csproj|solutionrelative:api\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9421990-2A22-4714-A007-55F06E1BC271}|API\\API.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{C9421990-2A22-4714-A007-55F06E1BC271}|API\\API.csproj|solutionrelative:api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{2F1F74ED-14A6-4247-9D52-410FC8490CDF}|BLL\\BLL.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\bll\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F1F74ED-14A6-4247-9D52-410FC8490CDF}|BLL\\BLL.csproj|solutionrelative:bll\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C9421990-2A22-4714-A007-55F06E1BC271}|API\\API.csproj|C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9421990-2A22-4714-A007-55F06E1BC271}|API\\API.csproj|solutionrelative:api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F1F74ED-14A6-4247-9D52-410FC8490CDF}|BLL\\BLL.csproj|c:\\users\\azminur rahman\\desktop\\github\\aspdotnetproject\\bank-account-api\\bll\\servicefactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F1F74ED-14A6-4247-9D52-410FC8490CDF}|BLL\\BLL.csproj|solutionrelative:bll\\servicefactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9421990-2A22-4714-A007-55F06E1BC271}|API\\API.csproj|C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\api\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9421990-2A22-4714-A007-55F06E1BC271}|API\\API.csproj|solutionrelative:api\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9421990-2A22-4714-A007-55F06E1BC271}|API\\API.csproj|C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C9421990-2A22-4714-A007-55F06E1BC271}|API\\API.csproj|solutionrelative:api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,33 +42,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\BLL\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\BLL\\Services\\UserService.cs",
+              "RelativeToolTip": "BLL\\Services\\UserService.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCMAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T13:05:15.414Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\API\\Controllers\\UserController.cs",
               "RelativeToolTip": "API\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAADwv1wAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAnwBIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-21T08:48:10.075Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "ServiceFactory.cs",
+              "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\BLL\\ServiceFactory.cs",
+              "RelativeDocumentMoniker": "BLL\\ServiceFactory.cs",
+              "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\BLL\\ServiceFactory.cs",
+              "RelativeToolTip": "BLL\\ServiceFactory.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAtwA0AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T12:37:53.138Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Global.asax.cs",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\API\\Global.asax.cs",
               "RelativeDocumentMoniker": "API\\Global.asax.cs",
               "ToolTip": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\API\\Global.asax.cs",
               "RelativeToolTip": "API\\Global.asax.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAA+wBoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAQwC8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-20T22:46:58.621Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": ".env",
               "DocumentMoniker": "C:\\Users\\AZMINUR RAHMAN\\Desktop\\GitHub\\AspDotNetProject\\Bank-Account-API\\API\\.env",
               "RelativeDocumentMoniker": "API\\.env",
@@ -68,8 +102,7 @@
               "RelativeToolTip": "API\\.env",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-09-21T08:29:34.952Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-21T08:29:34.952Z"
             }
           ]
         }

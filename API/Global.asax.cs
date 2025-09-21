@@ -1,3 +1,4 @@
+using BLL;
 using BLL.DTOs;
 using BLL.Services;
 using DotNetEnv;
@@ -12,8 +13,6 @@ namespace API
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
-        public static EmailService EmailService;
-        public static SmsService SmsService;
         protected void Application_Start()
         {
             // Get the path to the .env file in the application root
@@ -36,8 +35,6 @@ namespace API
                 User = Env.GetString("SMTP_USER"),
                 AppPassword = Env.GetString("SMTP_APP_PASSWORD")
             };
-            System.Diagnostics.Debug.WriteLine($"SMTP_USER: {emailSecret.User}");
-
 
             // Load SMS configuration from environment variables
             var smsSecret = new SmsSecretDTO
@@ -47,8 +44,7 @@ namespace API
                 SenderId = Env.GetString("SMS_SENDER_ID")
             };
 
-            EmailService = new EmailService(emailSecret);
-            SmsService = new SmsService(smsSecret);
+            ServiceFactory.Init(emailSecret, smsSecret);
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }

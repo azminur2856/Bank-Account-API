@@ -22,12 +22,17 @@ namespace BLL.Services
             return new Mapper(config);
         }
 
-        public static bool Create(UserDTO user)
+        public static async Task<bool> Create(UserDTO user)
         {
             user.Role = UserRole.Customer;
             user.CreatedAt = DateTime.Now;
             var result = true; //DataAccessFactory.UserData().Create(GetMapper().Map<User>(user));
-            if(result) return true;
+            if (result)
+            {
+                ServiceFactory.EmailService.SendEmail(user.Email, "Account Activation Test", $"Your account has been created. Please activate your account by an Admin.");
+                var res = await ServiceFactory.SmsService.SendSMSAsync(user.PhoneNumber, "Your account has been created. Please activate your account by an Admin.");
+                return res;
+            }
             return false;
         }
     }

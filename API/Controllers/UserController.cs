@@ -16,15 +16,16 @@ namespace API.Controllers
     {
         [HttpPost]
         [Route("create")]
-        public HttpResponseMessage Create(UserDTO user)
+        public async Task<HttpResponseMessage> Create(UserDTO user)
         {
-            if (user == null) {
+            if (user == null)
+            {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "Please provide user details for registration.");
             }
             try
             {
-                var res = UserService.Create(user);
-                if (res) return Request.CreateResponse(HttpStatusCode.Created, "A OTP code send to your email. Please use it for user activation. Thank you." );
+                var res = await UserService.Create(user);
+                if (res) return Request.CreateResponse(HttpStatusCode.Created, "A OTP code send to your email. Please use it for user activation. Thank you.");
                 return Request.CreateResponse(HttpStatusCode.GatewayTimeout, "Please try again!");
             }
             catch (Exception ex)
@@ -49,7 +50,7 @@ namespace API.Controllers
         {
             try
             {
-                var res = await WebApiApplication.SmsService.SendSMSAsync(sms.Number, sms.Message);
+                var res = await ServiceFactory.SmsService.SendSMSAsync(sms.Number, sms.Message);
                 if (res) return Request.CreateResponse(HttpStatusCode.OK, "SMS sent successfully.");
                 return Request.CreateResponse(HttpStatusCode.GatewayTimeout, "Failed to send SMS. Please try again!");
             }
@@ -76,7 +77,7 @@ namespace API.Controllers
         {
             try
             {
-                WebApiApplication.EmailService.SendEmail(e.Email, e.Subject, e.Body);
+                ServiceFactory.EmailService.SendEmail(e.Email, e.Subject, e.Body);
                 return Request.CreateResponse(HttpStatusCode.OK, "SMS sent successfully.");
 
             }

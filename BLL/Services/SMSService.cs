@@ -1,4 +1,5 @@
 ﻿using BLL.DTOs;
+using BLL.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using static AutoMapper.Internal.ExpressionFactory;
 
 namespace BLL.Services
 {
-    public class SmsService
+    internal class SmsService : ISmsService
     {
         private readonly SmsSecretDTO secret;
         private readonly HttpClient httpClient = new HttpClient();

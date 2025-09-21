@@ -48,7 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Interfaces\IEmailService.cs" />
+    <Compile Include="Interfaces\ISmsService.cs" />
+    <Compile Include="ServiceFactory.cs" />
     <Compile Include="DTOs\AccountDTO.cs" />
     <Compile Include="DTOs\EmailSecretDTO.cs" />
     <Compile Include="DTOs\SmsSecretDTO.cs" />
