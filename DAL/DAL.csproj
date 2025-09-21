@@ -78,6 +78,10 @@
     <Compile Include="Migrations\202509201912045_FixAccountRelationships.Designer.cs">
       <DependentUpon>202509201912045_FixAccountRelationships.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202509211624299_UpdateAccountTableType.cs" />
+    <Compile Include="Migrations\202509211624299_UpdateAccountTableType.Designer.cs">
+      <DependentUpon>202509211624299_UpdateAccountTableType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\AccountRepo.cs" />
@@ -102,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202509201912045_FixAccountRelationships.resx">
       <DependentUpon>202509201912045_FixAccountRelationships.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509211624299_UpdateAccountTableType.resx">
+      <DependentUpon>202509211624299_UpdateAccountTableType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

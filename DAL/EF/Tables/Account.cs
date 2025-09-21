@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,6 +23,9 @@ namespace DAL.EF.Tables
         [StringLength(20)]
         [Column(TypeName = "VARCHAR")]
         public string AccountNumber { get; set; }
+
+        [Required]
+        public AccountType Type { get; set; }
 
         [Required]
         [Column(TypeName = "DECIMAL")]

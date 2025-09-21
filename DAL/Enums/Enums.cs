@@ -21,6 +21,13 @@ namespace DAL.Enums
         PasswordReset
     }
 
+    public enum AccountType
+    {
+        Master = 1,
+        Savings,
+        Current
+    }
+
     public enum TransactionType
     {
         Deposit = 1,
