@@ -15,3 +15,4 @@ C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\DAL\obj
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\DAL\obj\Debug\DAL.Migrations.UpdateAccountTable.resources
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\DAL\obj\Debug\DAL.Migrations.AddVerificationAndUpdateUser.resources
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\DAL\obj\Debug\DAL.Migrations.FixAccountRelationships.resources
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\DAL\obj\Debug\DAL.Migrations.UpdateAccountTableType.resources
