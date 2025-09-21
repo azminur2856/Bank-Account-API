@@ -1,2 +1,3 @@
-# Ignore secretsettings.json in BLL
-BLL/secretsettings.json
+# Ignore .env in API
+API/.env
+API/bin/.env

@@ -1,10 +1,12 @@
-﻿using BLL.DTOs;
+﻿using BLL;
+using BLL.DTOs;
 using BLL.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace API.Controllers
@@ -27,6 +29,58 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new
+                {
+                    Message = "An unexpected error occurred.",
+                    Error = ex.Message
+                });
+            }
+        }
+
+        public class SmsRequest
+        {
+            public string Number { get; set; }
+            public string Message { get; set; }
+        }
+
+        [HttpPost]
+        [Route("sms")]
+        public async Task<HttpResponseMessage> SendSMS(SmsRequest sms)
+        {
+            try
+            {
+                var res = await WebApiApplication.SmsService.SendSMSAsync(sms.Number, sms.Message);
+                if (res) return Request.CreateResponse(HttpStatusCode.OK, "SMS sent successfully.");
+                return Request.CreateResponse(HttpStatusCode.GatewayTimeout, "Failed to send SMS. Please try again!");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new
+                {
+                    Message = "An unexpected error occurred.",
+                    Error = ex.Message
+                });
+            }
+        }
+
+        public class EmailRequest
+        {
+            public string Email { get; set; }
+            public string Subject { get; set; }
+            public string Body { get; set; }
+        }
+
+        [HttpPost]
+        [Route("email")]
+        public HttpResponseMessage SendEmail(EmailRequest e)
+        {
+            try
+            {
+                WebApiApplication.EmailService.SendEmail(e.Email, e.Subject, e.Body);
+                return Request.CreateResponse(HttpStatusCode.OK, "SMS sent successfully.");
+
+            }
+            catch (Exception ex) {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new
                 {
                     Message = "An unexpected error occurred.",

@@ -76,3 +76,16 @@ C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\AutoMapper.xml
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\DAL.pdb
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\DAL.dll.config
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\BLL.dll.config
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\DotNetEnv.dll
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\Microsoft.Extensions.Configuration.dll
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\Sprache.dll
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\Microsoft.Extensions.Configuration.xml
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\Sprache.xml
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\API\bin\.env

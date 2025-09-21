@@ -1,5 +1,4 @@
 ﻿using BLL.DTOs;
-using BLL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,42 +6,29 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    internal class EmailService : IEmailService
+    public class EmailService
     {
-        private readonly SecretSettingsDTO secret;
+        private readonly EmailSecretDTO secret;
 
-        public EmailService()
-        {
-            string path = Path.Combine(AppContext.BaseDirectory, "secretsettings.json");
-
-            if (!File.Exists(path))
-            {
-                throw new FileNotFoundException("The configuration file 'secretsettings.json' was not found.");
-            }
-
-            var json = File.ReadAllText(path);
-
-            var jsonDoc = JsonDocument.Parse(json);
-            var secretSettingsJeson = jsonDoc.RootElement.GetProperty("SecretSettings").GetRawText();
-            secret = JsonSerializer.Deserialize<SecretSettingsDTO>(secretSettingsJeson);
+        public EmailService(EmailSecretDTO secret) {
+            this.secret = secret;
         }
+
         public void SendEmail(string to, string subject, string body)
         {
-            var smtpClient = new SmtpClient(secret.Host)
+            var smtpClient = new SmtpClient(secret.Host, secret.Port)
             {
-                Port = secret.Port,
-                Credentials = new NetworkCredential(secret.FromEmail, secret.AppPassword),
+                Credentials = new NetworkCredential(secret.User, secret.AppPassword),
                 EnableSsl = true
             };
 
             var mailMessage = new MailMessage
             {
-                From = new MailAddress(secret.FromEmail),
+                From = new MailAddress(secret.User),
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true

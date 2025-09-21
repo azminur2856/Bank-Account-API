@@ -12,3 +12,6 @@ C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\bin
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\bin\Debug\DAL.dll.config
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\bin\Debug\AutoMapper.xml
 C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\bin\Debug\EntityFramework.xml
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\bin\Debug\BLL.dll.config
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\AZMINUR RAHMAN\Desktop\GitHub\AspDotNetProject\Bank-Account-API\BLL\bin\Debug\Newtonsoft.Json.xml

@@ -1,51 +1,47 @@
 ﻿using BLL.DTOs;
-using BLL.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
+using static AutoMapper.Internal.ExpressionFactory;
 
 namespace BLL.Services
 {
-    internal class SMSService : ISMSService
+    public class SmsService
     {
-        private readonly SecretSettingsDTO secret;
-        private readonly HttpClient httpClient;
+        private readonly SmsSecretDTO secret;
+        private readonly HttpClient httpClient = new HttpClient();
 
-        public SMSService()
+        public SmsService(SmsSecretDTO secret)
         {
-            string path = Path.Combine(AppContext.BaseDirectory, "secretsettings.json");
-
-            if (!File.Exists(path))
-            {
-                throw new FileNotFoundException("The configuration file 'secretsettings.json' was not found.");
-            }
-
-            var json = File.ReadAllText(path);
-
-            var jsonDoc = JsonDocument.Parse(json);
-            var secretSettingsJeson = jsonDoc.RootElement.GetProperty("SecretSettings").GetRawText();
-            secret = JsonSerializer.Deserialize<SecretSettingsDTO>(secretSettingsJeson);
+            this.secret = secret;
         }
-        public async Task<bool> SendSMSAsync(string numbers, string message)
+
+        public async Task<bool> SendSMSAsync(string numbers, string Message)
         {
             var paylod = new
             {
-                api_key = secret.SMSApiKey,
-                senderid = secret.SMSSenderId,
+                api_key = secret.ApiKey,
+                senderid = secret.SenderId,
                 number = numbers,
-                message = message
+                message = Message
             };
 
-            var jesonPaylod = JsonSerializer.Serialize(paylod);
+            var jesonPaylod = JsonConvert.SerializeObject(paylod);
             var content = new StringContent(jesonPaylod, Encoding.UTF8, "application/json");
 
-            var response = await httpClient.PostAsync(secret.SMSApiUrl, content);
-            return response.IsSuccessStatusCode;
+            var response = await httpClient.PostAsync(secret.ApiUrl, content);
+
+            if(!response.IsSuccessStatusCode) return false;
+
+            var respString = await response.Content.ReadAsStringAsync();
+
+            return respString.Contains("202");
         }
     }
 }
