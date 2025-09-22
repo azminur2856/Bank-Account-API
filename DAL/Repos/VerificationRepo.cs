@@ -1,5 +1,6 @@
 ﻿using DAL.EF;
 using DAL.EF.Tables;
+using DAL.Enums;
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class VerificationRepo : IRepo<Verification, string, bool>
+    internal class VerificationRepo : IRepo<Verification, string, bool>, IVerificationFeatures
     {
         BANKContext db;
 
@@ -32,9 +33,7 @@ namespace DAL.Repos
         public Verification Get(string id)
         {
             var verification = (from v in db.Verifications
-                                where v.Code.Equals(id) 
-                                    && v.ExpireAt > DateTime.UtcNow 
-                                    && !v.IsUsed
+                                where v.Code.Equals(id)
                                 select v).SingleOrDefault();
             return verification;
         }
@@ -44,11 +43,20 @@ namespace DAL.Repos
             throw new NotImplementedException();
         }
 
+        public Verification GetByCodeAndType(string code, VerificationType type)
+        {
+            var verification = (from v in db.Verifications
+                                where v.Code.Equals(code)
+                                    && v.Type == type
+                                    && v.ExpireAt > DateTime.UtcNow
+                                    && !v.IsUsed
+                                select v).SingleOrDefault();
+            return verification;
+        }
+
         public bool Update(Verification obj)
         {
-            var exobj = (from v in db.Verifications
-                        where v.Code.Equals(obj.Code)
-                        select v).SingleOrDefault();
+            var exobj = Get(obj.Code);
 
             if (exobj == null) return false;
             exobj.IsUsed = obj.IsUsed;

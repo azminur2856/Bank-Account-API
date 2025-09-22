@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,6 +37,34 @@ namespace BLL.Utility
             }
 
             return (false, default(T), validNames);
+        }
+
+        public static string GenerateToken(int byteLength = 48)
+        {
+            // 48 random bytes ≈ 64 base64url chars
+            byte[] randomBytes = new byte[byteLength];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomBytes);
+            }
+
+            string base64 = Convert.ToBase64String(randomBytes);
+
+            return base64.Replace("+", "-")
+                         .Replace("/", "_")
+                         .Replace("=", "");
+        }
+
+        public static string GenerateOtp(int byteLength = 4)
+        {
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                var bytes = new byte[byteLength];
+                rng.GetBytes(bytes);
+
+                int value = BitConverter.ToInt32(bytes, 0) & 0x7FFFFFFF;
+                return (value % 1_000_000).ToString("D6"); // Always 6 digits
+            }
         }
     }
 }

@@ -15,9 +15,8 @@ namespace DAL.Enums
 
     public enum VerificationType
     {
-        RegistrationVerification = 1,
+        EmailVerification = 1,
         PhoneVerification,
-        EmailVerification,
         PasswordReset
     }
 
@@ -39,14 +38,14 @@ namespace DAL.Enums
 
     public enum AuditLogType
     {
-        UserLogin = 1,
+        UserCreated = 1,
+        UserLogin,
         UserLogout,
         AccountCreated,
         TransactionPerformed,
         UpdateAccountType,
         PasswordChanged,
         RoleChanged,
-        RegistrationCompleted,
         EmailVrified,
         PhoneVerified,
         PasswordResetRequested,

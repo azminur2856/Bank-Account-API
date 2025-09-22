@@ -13,11 +13,13 @@ namespace BLL
     {
         public static IEmailService EmailService { get; private set; }
         public static ISmsService SmsService { get; private set; }
+        public static string ApiBaseUrl { get; private set; }
 
-        public static void Init(EmailSecretDTO emailSecret, SmsSecretDTO smsSecret)
+        public static void Init(EmailSecretDTO emailSecret, SmsSecretDTO smsSecret, string apiBaseUrl)
         {
             EmailService = new EmailService(emailSecret);
             SmsService = new SmsService(smsSecret);
+            ApiBaseUrl = apiBaseUrl;
         }
     }
 }

@@ -44,7 +44,10 @@ namespace API
                 SenderId = Env.GetString("SMS_SENDER_ID")
             };
 
-            ServiceFactory.Init(emailSecret, smsSecret);
+            // Get API base URL from environment variables
+            string apiBaseUrl = Env.GetString("API_BASE_URL");
+
+            ServiceFactory.Init(emailSecret, smsSecret, apiBaseUrl);
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }

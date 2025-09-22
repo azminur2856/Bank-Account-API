@@ -16,6 +16,11 @@ namespace DAL
             return new UserRepo();
         }
 
+        public static IUserFeatures UserFeaturesData()
+        {
+            return new UserRepo();
+        }
+
         public static IRepo<Account, string, Account> AccountData()
         {
             return new AccountRepo();
@@ -44,6 +49,16 @@ namespace DAL
         public static IRepo<Token, string, Token> TokenData()
         {
             return new TokenRepo();
+        }
+
+        public static IRepo<Verification, string, bool> VerificationData()
+        {
+            return new VerificationRepo();
+        }
+
+        public static IVerificationFeatures VerificationFeaturesData()
+        {
+            return new VerificationRepo();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BCrypt.Net;
 using BLL.DTOs;
 using DAL;
 using DAL.EF.Tables;
@@ -24,14 +25,38 @@ namespace BLL.Services
 
         public static async Task<bool> Create(UserDTO user)
         {
+            var existingUser = DataAccessFactory.UserFeaturesData().GetByEmail(user.Email);
+
+            if (existingUser != null)
+            {
+                return false;
+            }
+
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);
+
+            user.IsEmailVerified = false;
+            user.IsPhoneNumberVerified = false;
             user.Role = UserRole.Customer;
+            user.IsActive = false;
             user.CreatedAt = DateTime.Now;
-            var result = true; //DataAccessFactory.UserData().Create(GetMapper().Map<User>(user));
+
+            var result = DataAccessFactory.UserData().Create(GetMapper().Map<User>(user));
+            
             if (result)
             {
-                ServiceFactory.EmailService.SendWelcomeEmail(user.Email, user.FullName,"Welcome to our Bank");
-                var res = await ServiceFactory.SmsService.SendSMSAsync(user.PhoneNumber, "Your account has been created. Please activate your account by an Admin.");
-                return res;
+                var createdUser = DataAccessFactory.UserFeaturesData().GetByEmail(user.Email);
+                user.UserId = createdUser.UserId;
+                var emailSend = await VerificationService.SendEmailVerificationLink(user);
+
+                var auditLog = new AuditLogDTO
+                {
+                    UserId = user.UserId,
+                    Type = AuditLogType.UserCreated,
+                    Details = $"New user created with email {user.Email} and an email verification link has been sent.",
+                };
+                AuditLogService.LogActivity(auditLog);
+
+                return emailSend;
             }
             return false;
         }

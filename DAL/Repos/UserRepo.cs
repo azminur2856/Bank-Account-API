@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class UserRepo : IRepo<User, int, bool>
+    internal class UserRepo : IRepo<User, int, bool>, IUserFeatures
     {
         BANKContext db;
         public UserRepo()
@@ -37,6 +37,13 @@ namespace DAL.Repos
         public List<User> Get()
         {
             return db.Users.ToList();
+        }
+
+        public User GetByEmail(string email)
+        {
+            return (from u in db.Users
+                   where u.Email.Equals(email)
+                   select u).FirstOrDefault();
         }
 
         public bool Update(User obj)

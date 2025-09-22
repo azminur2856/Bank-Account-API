@@ -29,7 +29,7 @@ namespace BLL.Services
 
             var mailMessage = new MailMessage
             {
-                From = new MailAddress(secret.User, "Banking Service"),
+                From = new MailAddress(secret.User, "ART Bank PLC"),
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true
@@ -44,23 +44,22 @@ namespace BLL.Services
         {
             string subject = "Activate Your Account";
             string body = $@"
-            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px; color: #333;'>
-              <div style='max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); overflow: hidden;'>
-                <div style='background-color: #0d6efd; padding: 20px; text-align: center;'>
+            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px;'>
+              <div style='max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);'>
+                <div style='background-color: #0d6efd; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;'>
                   <h2 style='color: #fff;'>Activate Your Account</h2>
                 </div>
                 <div style='padding: 20px;'>
                   <p>Hello <strong>{fullName}</strong>,</p>
-                  <p>Thank you for creating an account. Please confirm your email address by clicking below:</p>
+                  <p>Thank you for creating an account with <strong>ART Bank PLC</strong>. Please confirm your email address by clicking below:</p>
                   <p style='text-align: center;'>
                     <a href='{activationLink}' style='background: #0d6efd; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 5px;'>Activate Account</a>
                   </p>
+                  <p><strong>Note:</strong> This link will expire in <strong>24 hours</strong>.</p>
                   <p>If you didn’t create this account, please ignore this email.</p>
-                  <p style='margin-top: 40px;'>Regards,<br><strong>Banking Team</strong></p>
+                  <p style='margin-top: 40px;'>Regards,<br><strong>ART Bank PLC Team</strong></p>
                 </div>
-                <div style='background: #f4f6f8; text-align: center; padding: 10px; font-size: 12px; color: #6c757d;'>
-                  © {DateTime.Now.Year} Banking Corp. All rights reserved.
-                </div>
+                {Footer()}
               </div>
             </div>";
             SendEmail(to, subject, body);
@@ -69,12 +68,12 @@ namespace BLL.Services
         // 2. Welcome Email
         public void SendWelcomeEmail(string to, string fullName, string dashboardLink)
         {
-            string subject = "Welcome to AR Bank!";
+            string subject = "Welcome to ART Bank PLC!";
             string body = $@"
-            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px; color: #333;'>
-              <div style='max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); overflow: hidden;'>
-                <div style='background-color: #198754; padding: 20px; text-align: center;'>
-                  <h2 style='color: #fff;'>Welcome to AR Bank!</h2>
+            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px;'>
+              <div style='max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);'>
+                <div style='background-color: #198754; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;'>
+                  <h2 style='color: #fff;'>Welcome to ART Bank PLC!</h2>
                 </div>
                 <div style='padding: 20px;'>
                   <p>Hello <strong>{fullName}</strong>,</p>
@@ -82,11 +81,9 @@ namespace BLL.Services
                   <p style='text-align: center;'>
                     <a href='{dashboardLink}' style='background: #198754; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 5px;'>Go to Dashboard</a>
                   </p>
-                  <p>We look forward to serving you.<br><strong>Banking Team</strong></p>
+                  <p>We look forward to serving you.<br><strong>ART Bank PLC Team</strong></p>
                 </div>
-                <div style='background: #f4f6f8; text-align: center; padding: 10px; font-size: 12px; color: #6c757d;'>
-                  © {DateTime.Now.Year} Banking Corp. All rights reserved.
-                </div>
+                {Footer()}
               </div>
             </div>";
             SendEmail(to, subject, body);
@@ -97,9 +94,9 @@ namespace BLL.Services
         {
             string subject = $"Transaction Alert - {type}";
             string body = $@"
-            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px; color: #333;'>
-              <div style='max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); overflow: hidden;'>
-                <div style='background-color: #0dcaf0; padding: 20px; text-align: center;'>
+            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px;'>
+              <div style='max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);'>
+                <div style='background-color: #0dcaf0; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;'>
                   <h2 style='color: #fff;'>Transaction Alert</h2>
                 </div>
                 <div style='padding: 20px;'>
@@ -112,11 +109,9 @@ namespace BLL.Services
                     <li><strong>Reference:</strong> {reference}</li>
                   </ul>
                   <p>If this wasn’t you, please contact our support team immediately.</p>
-                  <p><strong>Banking Security Team</strong></p>
+                  <p><strong>ART Bank PLC Security Team</strong></p>
                 </div>
-                <div style='background: #f4f6f8; text-align: center; padding: 10px; font-size: 12px; color: #6c757d;'>
-                  © {DateTime.Now.Year} Banking Corp. All rights reserved.
-                </div>
+                {Footer()}
               </div>
             </div>";
             SendEmail(to, subject, body);
@@ -127,9 +122,9 @@ namespace BLL.Services
         {
             string subject = "Password Reset OTP";
             string body = $@"
-            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px; color: #333;'>
-              <div style='max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); overflow: hidden;'>
-                <div style='background-color: #dc3545; padding: 20px; text-align: center;'>
+            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px;'>
+              <div style='max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);'>
+                <div style='background-color: #dc3545; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;'>
                   <h2 style='color: #fff;'>Password Reset Request</h2>
                 </div>
                 <div style='padding: 20px;'>
@@ -137,11 +132,9 @@ namespace BLL.Services
                   <p>We received a request to reset your password. Use the OTP below:</p>
                   <p style='text-align: center; font-size: 24px; font-weight: bold; background: #f8f9fa; padding: 10px; border-radius: 5px;'>{otp}</p>
                   <p>This OTP will expire in <strong>5 minutes</strong>. If you didn’t request this, please ignore this email.</p>
-                  <p><strong>Banking Security Team</strong></p>
+                  <p><strong>ART Bank PLC Security Team</strong></p>
                 </div>
-                <div style='background: #f4f6f8; text-align: center; padding: 10px; font-size: 12px; color: #6c757d;'>
-                  © {DateTime.Now.Year} Banking Corp. All rights reserved.
-                </div>
+                {Footer()}
               </div>
             </div>";
             SendEmail(to, subject, body);
@@ -151,61 +144,43 @@ namespace BLL.Services
         public void SendNotificationEmail(string to, string fullName, string subject, string messageBody)
         {
             string body = $@"
-            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px; color: #333;'>
-              <div style='max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); overflow: hidden;'>
-                <div style='background-color: #6c757d; padding: 20px; text-align: center;'>
+            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px;'>
+              <div style='max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);'>
+                <div style='background-color: #6c757d; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;'>
                   <h2 style='color: #fff;'>Notification</h2>
                 </div>
                 <div style='padding: 20px;'>
                   <p>Hello <strong>{fullName}</strong>,</p>
                   <p>{messageBody}</p>
-                  <p>Regards,<br><strong>Banking Team</strong></p>
+                  <p>Regards,<br><strong>ART Bank PLC Team</strong></p>
                 </div>
-                <div style='background: #f4f6f8; text-align: center; padding: 10px; font-size: 12px; color: #6c757d;'>
-                  © {DateTime.Now.Year} Banking Corp. All rights reserved.
-                </div>
+                {Footer()}
               </div>
             </div>";
             SendEmail(to, subject, body);
         }
 
-        // 6. Fully Custom Template
-        public void SendCustomEmail(
-            string to,
-            string fullName,
-            string subject,
-            string headline,
-            string messageBody)
+        // 6. Fully Custom Email
+        public void SendCustomEmail(string to, string fullName, string subject, string headline, string messageBody)
         {
             string body = $@"
-            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px; color: #333;'>
-              <div style='max-width: 650px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); overflow: hidden;'>
-        
-                <!-- Header / Banner -->
-                <div style='background: linear-gradient(90deg, #0d6efd, #198754); padding: 30px; text-align: center;'>
+            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px;'>
+              <div style='max-width: 650px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);'>
+                <div style='background: linear-gradient(90deg, #0d6efd, #198754); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;'>
                   <h1 style='color: #fff; margin: 0;'>{headline}</h1>
                 </div>
-
-                <!-- Body -->
                 <div style='padding: 25px;'>
                   <p>Hello <strong>{fullName}</strong>,</p>
                   <p style='font-size: 15px; line-height: 1.6;'>{messageBody}</p>
-                  <p style='margin-top: 30px;'>Best regards,<br><strong>Banking Team</strong></p>
+                  <p style='margin-top: 30px;'>Best regards,<br><strong>ART Bank PLC Team</strong></p>
                 </div>
-
-                <!-- Divider -->
-                <hr style='border: none; border-top: 1px solid #e0e0e0; margin: 0;' />
-
-                <!-- Footer -->
-                <div style='background: #f8f9fa; padding: 15px; text-align: center; font-size: 12px; color: #6c757d;'>
-                  <p style='margin: 0;'>© {DateTime.Now.Year} Banking Corp. All rights reserved.</p>
-                  <p style='margin: 5px 0 0;'>123 Finance Street, New York, NY</p>
-                </div>
+                {Footer()}
               </div>
             </div>";
             SendEmail(to, subject, body);
         }
-        // 7. Fully Custom Template Button
+
+        // 7. Fully Custom Template (with Button)
         public void SendCustomButtonEmail(
             string to,
             string fullName,
@@ -216,11 +191,11 @@ namespace BLL.Services
             string buttonLink)
         {
             string body = $@"
-            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px; color: #333;'>
-              <div style='max-width: 650px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); overflow: hidden;'>
-        
+            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px;'>
+              <div style='max-width: 650px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);'>
+
                 <!-- Header / Banner -->
-                <div style='background: linear-gradient(90deg, #0d6efd, #198754); padding: 30px; text-align: center;'>
+                <div style='background: linear-gradient(90deg, #0d6efd, #198754); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;'>
                   <h1 style='color: #fff; margin: 0;'>{headline}</h1>
                 </div>
 
@@ -231,46 +206,32 @@ namespace BLL.Services
                   <p style='text-align: center; margin: 30px 0;'>
                     <a href='{buttonLink}' style='background: #0d6efd; color: #fff; font-size: 16px; padding: 14px 28px; text-decoration: none; border-radius: 6px; font-weight: bold;'>{buttonText}</a>
                   </p>
-                  <p>If you have any questions, please contact our <a href='mailto:support@bankingcorp.com' style='color:#0d6efd;'>support team</a>.</p>
+                  <p>If you have any questions, please contact our <a href='mailto:support@artbank.com' style='color:#0d6efd;'>support team</a>.</p>
+                  <p style='margin-top: 20px;'>Best regards,<br><strong>ART Bank PLC Team</strong></p>
                 </div>
 
                 <!-- Divider -->
                 <hr style='border: none; border-top: 1px solid #e0e0e0; margin: 0;' />
 
-                <!-- Footer -->
-                <div style='background: #f8f9fa; padding: 15px; text-align: center; font-size: 12px; color: #6c757d;'>
-                  <p style='margin: 0;'>© {DateTime.Now.Year} Banking Corp. All rights reserved.</p>
-                  <p style='margin: 5px 0 0;'>123 Finance Street, New York, NY</p>
-                </div>
+                {Footer()}
               </div>
             </div>";
             SendEmail(to, subject, body);
         }
 
-        // 8. New Account Creation Details Email (without Branch & IFSC)
-        public void SendNewAccountDetailsEmail(
-            string to,
-            string fullName,
-            string accountNumber,
-            string accountType,
-            string openingBalance,
-            string openingTime)
+        // 8. New Account Creation Details
+        public void SendNewAccountDetailsEmail(string to, string fullName, string accountNumber, string accountType, string openingBalance, string openingTime)
         {
-            string subject = "Your New Bank Account Has Been Created";
+            string subject = "Your New ART Bank PLC Account Has Been Created";
             string body = $@"
-            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px; color: #333;'>
-              <div style='max-width: 650px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); overflow: hidden;'>
-        
-                <!-- Header -->
-                <div style='background-color: #0d6efd; padding: 25px; text-align: center;'>
-                  <h2 style='color: #fff; margin: 0;'>Welcome to Banking Corp</h2>
+            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px;'>
+              <div style='max-width: 650px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);'>
+                <div style='background-color: #0d6efd; padding: 25px; text-align: center; border-radius: 8px 8px 0 0;'>
+                  <h2 style='color: #fff; margin: 0;'>Welcome to ART Bank PLC</h2>
                 </div>
-
-                <!-- Body -->
                 <div style='padding: 25px;'>
                   <p>Hello <strong>{fullName}</strong>,</p>
-                  <p>We’re pleased to inform you that your new account has been successfully created. Below are the details of your account:</p>
-          
+                  <p>Your new account has been successfully created. Here are the details:</p>
                   <table style='width: 100%; border-collapse: collapse; margin-top: 15px;'>
                     <tr style='background: #f8f9fa;'>
                       <td style='padding: 10px; border: 1px solid #dee2e6;'><strong>Account Number</strong></td>
@@ -289,25 +250,26 @@ namespace BLL.Services
                       <td style='padding: 10px; border: 1px solid #dee2e6;'>{openingTime}</td>
                     </tr>
                   </table>
-
                   <p style='margin-top: 25px;'>You can now log in to your online banking portal to manage your account and explore our services.</p>
-                  <p style='margin-top: 20px;'>Thank you for choosing <strong>Banking Corp</strong>.<br>We look forward to serving you.</p>
+                  <p style='margin-top: 20px;'>Thank you for choosing <strong>ART Bank PLC</strong>.<br>We look forward to serving you.</p>
                 </div>
-
-                <!-- Security Note -->
                 <div style='padding: 15px; font-size: 12px; background: #fff3cd; color: #856404; border-top: 1px solid #ffeeba;'>
-                  ⚠️ <strong>Security Tip:</strong> Please do not share your account details, PIN, or password with anyone. Banking Corp will never ask for such information via email or phone.
+                  ⚠️ <strong>Security Tip:</strong> Please do not share your account details, PIN, or password with anyone. ART Bank PLC will never ask for such information via email or phone.
                 </div>
-
-                <!-- Footer -->
-                <div style='background: #f8f9fa; padding: 15px; text-align: center; font-size: 12px; color: #6c757d;'>
-                  <p style='margin: 0;'>© {DateTime.Now.Year} Banking Corp. All rights reserved.</p>
-                  <p style='margin: 5px 0 0;'>123 Finance Street, New York, NY</p>
-                </div>
+                {Footer()}
               </div>
             </div>";
             SendEmail(to, subject, body);
         }
+
+        // Shared Footer
+        private string Footer()
+        {
+            return $@"
+            <div style='background: #f8f9fa; text-align: center; padding: 15px; font-size: 12px; color: #6c757d; border-radius: 0 0 8px 8px;'>
+              © {DateTime.Now.Year} ART Bank PLC. All rights reserved.<br />
+              Head Office, Motijheel, Dhaka, Bangladesh
+            </div>";
+        }
     }
 }
-

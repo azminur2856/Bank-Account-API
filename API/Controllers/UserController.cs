@@ -16,10 +16,48 @@ namespace API.Controllers
     {
         [HttpPost]
         [Route("create")]
-        public HttpResponseMessage Create(UserDTO user)
+        public async Task<HttpResponseMessage> Create(UserDTO user)
         {
-            var result = UserService.Create(user);
-            return Request.CreateResponse(HttpStatusCode.OK);
+            try
+            {
+                var result = await UserService.Create(user);
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "User created successfully. Please check your email to verify your account.");
+                }
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "User creation failed.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new
+                {
+                    Message = "An error occurred while creating the user.",
+                    Error = ex.Message
+                });
+            }
+        }
+
+        [HttpGet]
+        [Route("verifyaccount/{token}")]
+        public HttpResponseMessage VerifyEmail(string token)
+        {
+            try
+            {
+                var result = VerificationService.VerifyEmail(token);
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Email verified successfully. You can now log in.");
+                }
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid or expired verification link.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new
+                {
+                    Message = "An error occurred while verifying the email.",
+                    Error = ex.Message
+                });
+            }
         }
     }
 }

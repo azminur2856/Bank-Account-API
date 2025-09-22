@@ -63,6 +63,8 @@
     <Compile Include="Interfaces\IAccountFeatures.cs" />
     <Compile Include="Interfaces\IAuditLogFeatures.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
+    <Compile Include="Interfaces\IUserFeatures.cs" />
+    <Compile Include="Interfaces\IVerificationFeatures.cs" />
     <Compile Include="Migrations\202509191506315_InitBankAccountAPIDb.cs" />
     <Compile Include="Migrations\202509191506315_InitBankAccountAPIDb.Designer.cs">
       <DependentUpon>202509191506315_InitBankAccountAPIDb.cs</DependentUpon>
