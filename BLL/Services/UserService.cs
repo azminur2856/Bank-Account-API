@@ -29,7 +29,7 @@ namespace BLL.Services
             var result = true; //DataAccessFactory.UserData().Create(GetMapper().Map<User>(user));
             if (result)
             {
-                ServiceFactory.EmailService.SendEmail(user.Email, "Account Activation Test", $"Your account has been created. Please activate your account by an Admin.");
+                ServiceFactory.EmailService.SendWelcomeEmail(user.Email, user.FullName,"Welcome to our Bank");
                 var res = await ServiceFactory.SmsService.SendSMSAsync(user.PhoneNumber, "Your account has been created. Please activate your account by an Admin.");
                 return res;
             }
