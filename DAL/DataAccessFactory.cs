@@ -36,6 +36,11 @@ namespace DAL
             return new AuditLogRepo();
         }
 
+        public static IAuditLogFeatures AuditLogFeaturesData()
+        {
+            return new AuditLogRepo();
+        }
+
         public static IRepo<Token, string, Token> TokenData()
         {
             return new TokenRepo();

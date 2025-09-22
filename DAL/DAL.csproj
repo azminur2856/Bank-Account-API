@@ -61,6 +61,7 @@
     <Compile Include="EF\Tables\Verification.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Interfaces\IAccountFeatures.cs" />
+    <Compile Include="Interfaces\IAuditLogFeatures.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Migrations\202509191506315_InitBankAccountAPIDb.cs" />
     <Compile Include="Migrations\202509191506315_InitBankAccountAPIDb.Designer.cs">
