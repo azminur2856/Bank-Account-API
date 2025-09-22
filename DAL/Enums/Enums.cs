@@ -43,8 +43,15 @@ namespace DAL.Enums
         UserLogout,
         AccountCreated,
         TransactionPerformed,
+        UpdateAccountType,
         PasswordChanged,
-        RoleChanged
+        RoleChanged,
+        RegistrationCompleted,
+        EmailVrified,
+        PhoneVerified,
+        PasswordResetRequested,
+        PasswordResetCompleted,
+        Other
     }
     public class Enums
     {
