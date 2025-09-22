@@ -90,6 +90,7 @@
     <Compile Include="Repos\TokenRepo.cs" />
     <Compile Include="Repos\TransactionRepo.cs" />
     <Compile Include="Repos\UserRepo.cs" />
+    <Compile Include="Repos\VerificationRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

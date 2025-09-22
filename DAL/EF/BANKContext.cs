@@ -15,6 +15,7 @@ namespace DAL.EF
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
         public DbSet<Token> Tokens { get; set; }
+        public DbSet<Verification> Verifications { get; set; }
 
         // Use for prevents EF to create shadow properties of User in Account like User_UserId
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
