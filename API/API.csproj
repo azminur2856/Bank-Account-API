@@ -237,8 +237,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Auth\Admin.cs" />
+    <Compile Include="Auth\Logged.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuditLogController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

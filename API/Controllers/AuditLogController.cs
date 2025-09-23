@@ -1,4 +1,5 @@
-﻿using BLL.Services;
+﻿using API.Auth;
+using BLL.Services;
 using Sprache;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace API.Controllers
     [RoutePrefix("api/auditlogs")]
     public class AuditLogController : ApiController
     {
+        [Logged]
+        [Admin]
         [HttpGet]
         [Route("all")]
         public HttpResponseMessage GetAllLogs()

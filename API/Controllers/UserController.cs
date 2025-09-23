@@ -18,18 +18,18 @@ namespace API.Controllers
         [Route("create")]
         public async Task<HttpResponseMessage> Create(UserDTO user)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = "Validation failed.",
+                    Errors = errors
+                });
+            }
+
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, new
-                    {
-                        Message = "Validation failed.",
-                        Errors = errors
-                    });
-                }
-                
                 var result = await UserService.Create(user);
                 
                 if (result)
@@ -42,7 +42,7 @@ namespace API.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new
                 {
-                    message = ex.Message
+                    Message = ex.Message
                 });
             }
             catch (Exception ex)
