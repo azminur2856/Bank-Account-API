@@ -20,12 +20,30 @@ namespace API.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                    {
+                        Message = "Validation failed.",
+                        Errors = errors
+                    });
+                }
+                
                 var result = await UserService.Create(user);
+                
                 if (result)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, "User created successfully. Please check your email to verify your account.");
                 }
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, "User creation failed.");
+            }
+            catch(InvalidOperationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    message = ex.Message
+                });
             }
             catch (Exception ex)
             {

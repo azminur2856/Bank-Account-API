@@ -10,5 +10,6 @@ namespace DAL.Interfaces
     public interface IUserFeatures
     {
         User GetByEmail(string email);
+        User GetByPhone(string phone);
     }
 }

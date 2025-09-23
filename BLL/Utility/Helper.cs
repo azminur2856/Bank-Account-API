@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DnsClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -64,6 +65,22 @@ namespace BLL.Utility
 
                 int value = BitConverter.ToInt32(bytes, 0) & 0x7FFFFFFF;
                 return (value % 1_000_000).ToString("D6"); // Always 6 digits
+            }
+        }
+
+        public static bool DomainHasMxRecord(string email)
+        {
+            try
+            {
+                var domain = email.Split('@')[1];
+                var lookup = new LookupClient();
+                var result = lookup.Query(domain, QueryType.MX);
+
+                return result.Answers.MxRecords().Any();
+            }
+            catch
+            {
+                return false;
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BCrypt.Net;
 using BLL.DTOs;
+using BLL.Utility;
 using DAL;
 using DAL.EF.Tables;
 using DAL.Enums;
@@ -25,11 +26,23 @@ namespace BLL.Services
 
         public static async Task<bool> Create(UserDTO user)
         {
-            var existingUser = DataAccessFactory.UserFeaturesData().GetByEmail(user.Email);
+            var existingUserEmail = DataAccessFactory.UserFeaturesData().GetByEmail(user.Email);
 
-            if (existingUser != null)
+            if (existingUserEmail != null)
             {
-                return false;
+                throw new InvalidOperationException("A user with this email already exists.");
+            }
+
+            if (!Helper.DomainHasMxRecord(user.Email))
+            {
+                throw new InvalidOperationException("The email domain is invalid or does not have a valid MX record.");
+            }
+
+            var existingUserPhone = DataAccessFactory.UserFeaturesData().GetByPhone(user.PhoneNumber);
+
+            if (existingUserPhone != null)
+            {
+                throw new InvalidOperationException("A user with this phone number already exists.");
             }
 
             user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);

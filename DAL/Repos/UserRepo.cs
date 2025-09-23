@@ -46,6 +46,13 @@ namespace DAL.Repos
                    select u).FirstOrDefault();
         }
 
+        public User GetByPhone(string phone)
+        {
+            return (from u in db.Users
+                    where u.PhoneNumber.Equals(phone)
+                    select u).FirstOrDefault();
+        }
+
         public bool Update(User obj)
         {
             var exobj = Get(obj.UserId);
