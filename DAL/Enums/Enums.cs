@@ -46,11 +46,13 @@ namespace DAL.Enums
         UpdateAccountType,
         PasswordChanged,
         RoleChanged,
+        CompleateRegistrationActiveAccountAndVerifyEmail,
         EmailVrified,
         PhoneVerified,
         PasswordResetRequested,
         PasswordResetCompleted,
-        Other
+        EmailVerificationLinkSent,
+        PhoneVerificationCodeSent
     }
     public class Enums
     {

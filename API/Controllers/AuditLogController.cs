@@ -1,4 +1,5 @@
 ﻿using API.Auth;
+using BLL.DTOs;
 using BLL.Services;
 using Sprache;
 using System;
@@ -109,24 +110,22 @@ namespace API.Controllers
             }
         }
 
-        public class EmailRequest
-        {
-            public string Email { get; set; }
-        }
-
         [HttpPost]
         [Route("byuseremail")]
-        public HttpResponseMessage GetLogsByUserEmail(EmailRequest email)
+        public HttpResponseMessage GetLogsByUserEmail(EmailDTO email)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = "Validation failed.",
+                    Errors = errors
+                });
+            }
+
             try
             {
-                if (string.IsNullOrWhiteSpace(email.Email))
-                {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, new
-                    {
-                        Message = "Email must be provided."
-                    });
-                }
                 var logs = AuditLogService.GetByUserEmail(email.Email);
                 if (logs == null || !logs.Any())
                 {

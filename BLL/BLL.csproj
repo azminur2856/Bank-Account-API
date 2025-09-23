@@ -68,7 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\AuditLogDTO.cs" />
+    <Compile Include="DTOs\EmailDTO.cs" />
     <Compile Include="DTOs\LoginDTO.cs" />
+    <Compile Include="DTOs\OtpDTO.cs" />
+    <Compile Include="DTOs\PasswordChangeDTO.cs" />
+    <Compile Include="DTOs\PasswordResetDTO.cs" />
     <Compile Include="DTOs\TokenDTO.cs" />
     <Compile Include="Interfaces\IEmailService.cs" />
     <Compile Include="Interfaces\ISmsService.cs" />

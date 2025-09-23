@@ -59,7 +59,7 @@ namespace BLL.Services
             {
                 var createdUser = DataAccessFactory.UserFeaturesData().GetByEmail(user.Email);
                 user.UserId = createdUser.UserId;
-                var emailSend = await VerificationService.SendEmailVerificationLink(user);
+                var emailSend = await VerificationService.SendEmailVerificationLink(user, true);
 
                 var auditLog = new AuditLogDTO
                 {
@@ -70,6 +70,47 @@ namespace BLL.Services
                 AuditLogService.LogActivity(auditLog);
 
                 return emailSend;
+            }
+            return false;
+        }
+
+        public static bool ChangePassword(string tokenKey, PasswordChangeDTO cp)
+        {
+            var token = DataAccessFactory.TokenData().Get(tokenKey);
+            if (token != null && token.ExpireAt == null) 
+            {
+                var userRepo = DataAccessFactory.UserData();
+                var user = userRepo.Get(token.UserId);
+
+                if (user == null)
+                {
+                    throw new KeyNotFoundException("User not found.");
+                }
+
+                if (!BCrypt.Net.BCrypt.Verify(cp.OldPassword, user.PasswordHash)) 
+                {
+                    throw new UnauthorizedAccessException("Old password does not match.");
+                }
+
+                user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(cp.NewPassword);
+                user.UpdatedAt = DateTime.Now;
+
+                var isUpdated = userRepo.Update(user);
+
+                if(isUpdated)
+                {
+                    var auditLog = new AuditLogDTO
+                    {
+                        UserId = user.UserId,
+                        Type = AuditLogType.PasswordChanged,
+                        Details = $"User '{user.FullName}' (ID: {user.UserId}) changed their password at {DateTime.Now:yyyy-MM-dd HH:mm:ss}.",
+                    };
+                    AuditLogService.LogActivity(auditLog);
+                    // this just logout the current session
+                    AuthService.Logout(tokenKey);
+                    // TODO: Need to implement forced logout from all other sessions
+                }
+                return isUpdated;
             }
             return false;
         }
