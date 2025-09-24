@@ -193,6 +193,20 @@ namespace API.Controllers
                     Message = "Failed to reset password. Please try again."
                 });
             }
+            catch (KeyNotFoundException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new
+                {
+                    Message = ex.Message
+                });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = ex.Message
+                });
+            }
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new

@@ -273,7 +273,7 @@ namespace BLL.Services
             var user = DataAccessFactory.UserFeaturesData().GetByEmail(prrd.Email);
             if(user == null)
             {
-                throw new KeyNotFoundException("User not found with the provided email.");
+                throw new KeyNotFoundException("No user found with the provided email address. Please check the email and try again.");
             }
 
             var type = string.IsNullOrWhiteSpace(prrd.Type) ? "Email" : prrd.Type.Trim();
@@ -341,17 +341,23 @@ namespace BLL.Services
 
         public static bool ResetPassword(PasswordResetDTO prd)
         {
-            var verification = DataAccessFactory.VerificationFeaturesData().GetByCodeAndType(prd.ResetOtp, VerificationType.PasswordReset);
-
-            if (verification == null) return false;
-
             var user = DataAccessFactory.UserFeaturesData().GetByEmail(prd.Email);
 
-            if (user == null) return false;
-
-            if(verification.UserId != user.UserId || verification.IsUsed || verification.ExpireAt < DateTime.UtcNow)
+            if (user == null)
             {
-                return false;
+                throw new KeyNotFoundException("No user found with the provided email address. Please check the email and try again.");
+            }
+
+            var verification = DataAccessFactory.VerificationFeaturesData().GetByCodeAndType(prd.ResetOtp, VerificationType.PasswordReset);
+
+            if (verification == null)
+            {
+                throw new UnauthorizedAccessException("Invalid or expired OTP.");
+            }
+
+            if (verification.UserId != user.UserId || verification.IsUsed || verification.ExpireAt < DateTime.UtcNow)
+            {
+                throw new UnauthorizedAccessException("Invalid or expired OTP.");
             }
 
             user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(prd.NewPassword);
@@ -375,7 +381,7 @@ namespace BLL.Services
                 ServiceFactory.EmailService.SendNotificationEmail(
                         user.Email,
                         user.FullName,
-                        "Password Reset Alart",
+                        "Password Reset Alert",
                         $"<p>Your password has been successfully reset. If you did not make this change, please contact support immediately.</p>"
                 );
             }
