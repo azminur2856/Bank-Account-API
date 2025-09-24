@@ -280,5 +280,170 @@ namespace API.Controllers
                 });
             }
         }
+
+        [Logged]
+        [HttpPost]
+        [Route("address/add")]
+        public HttpResponseMessage AddAddress(AddressAddDTO addressAddDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = "Validation failed.",
+                    Errors = errors
+                });
+            }
+            try
+            {
+                var header = Request.Headers.Authorization;
+                var result = AddressService.AddAddress(header.ToString(), addressAddDTO);
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Address added successfully.");
+                }
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Failed to add address.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new
+                {
+                    Message = ex.Message
+                });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new 
+                { 
+                    Message = ex.Message 
+                });
+
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new 
+                { 
+                    Message = "An unexpected error occurred.", 
+                    Error = ex.Message 
+                });
+            }
+        }
+
+        [Logged]
+        [HttpPost]
+        [Route("address/update/present")]
+        public HttpResponseMessage UpdatePresentAddress(AddressDTO addressDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = "Validation failed.",
+                    Errors = errors
+                });
+            }
+            try
+            {
+                var header = Request.Headers.Authorization;
+                var result = AddressService.UpdatePresentAddress(header.ToString(), addressDTO);
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Present address updated successfully.");
+                }
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Failed to update address.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new 
+                { 
+                    Message = ex.Message 
+                });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new 
+                { 
+                    Message = ex.Message 
+                });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new 
+                { 
+                    Message = "An unexpected error occurred.", 
+                    Error = ex.Message 
+                });
+            }
+        }
+
+        [Logged]
+        [HttpGet]
+        [Route("address/all")]
+        public HttpResponseMessage GetAllAddresses()
+        {
+            try
+            {
+                var header = Request.Headers.Authorization;
+                var addresses = AddressService.GetUserAddresses(header.ToString());
+                if (addresses == null || !addresses.Any())
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, new 
+                    { 
+                        Message = "No addresses found for this user." 
+                    });
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, addresses);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new 
+                { 
+                    Message = "An unexpected error occurred.", 
+                    Error = ex.Message 
+                });
+            }
+        }
+
+        [Logged]
+        [Role("Admin", "Employee")]
+        [HttpPost]
+        [Route("address/verify/{addressId}")]
+        public HttpResponseMessage VerifyAddress(int addressId)
+        {
+            try
+            {
+                var header = Request.Headers.Authorization;
+                var result = AddressService.VerifyAddress(header.ToString(), addressId);
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Address verified successfully.");
+                }
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Failed to verify address. Address might already be verified or an error occurred.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new 
+                { 
+                    Message = ex.Message
+                });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Unauthorized, new 
+                {
+                    Message = ex.Message 
+                });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new 
+                { 
+                    Message = "An unexpected error occurred.", 
+                    Error = ex.Message
+                });
+            }
+        }
     }
 }

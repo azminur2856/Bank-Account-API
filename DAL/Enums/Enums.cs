@@ -53,8 +53,19 @@ namespace DAL.Enums
         PasswordResetSmsOtpRequested,
         PasswordResetCompleted,
         EmailVerificationLinkSent,
-        PhoneVerificationCodeSent
+        PhoneVerificationCodeSent,
+        PresentAddressAdded,
+        PermanentAddressAdded,
+        PresentAddressUpdated,
+        AddressVerified
     }
+
+    public enum AddressType
+    {
+        Present = 1,
+        Permanent
+    }
+
     public class Enums
     {
     }

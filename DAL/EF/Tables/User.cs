@@ -58,5 +58,7 @@ namespace DAL.EF.Tables
         public virtual List<Token> Tokens { get; set; }
 
         public virtual List<Verification> Verifications { get; set; }
+
+        public virtual List<Address> Addresses { get; set; }
     }
 }

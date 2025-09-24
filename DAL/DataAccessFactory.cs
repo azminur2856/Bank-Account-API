@@ -60,5 +60,15 @@ namespace DAL
         {
             return new VerificationRepo();
         }
+
+        public static IRepo<Address, int, bool> AddressData()
+        {
+            return new AddressRepo();
+        }
+
+        public static IAddressFeatures AddressFeaturesData()
+        {
+            return new AddressRepo();
+        }
     }
 }
