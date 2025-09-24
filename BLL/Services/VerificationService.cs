@@ -267,5 +267,119 @@ namespace BLL.Services
             );
             return isUserUpdated;
         }
+
+        public static async Task<bool> SendPasswordResetOTP(PasswordResetRequestDTO prrd) 
+        {
+            var user = DataAccessFactory.UserFeaturesData().GetByEmail(prrd.Email);
+            if(user == null)
+            {
+                throw new KeyNotFoundException("User not found with the provided email.");
+            }
+
+            var type = string.IsNullOrWhiteSpace(prrd.Type) ? "Email" : prrd.Type.Trim();
+            type = type.ToLowerInvariant();
+
+            if (type == "email")
+            {
+                if(!user.IsEmailVerified)
+                {
+                    throw new ArgumentException("Email is not verified.");
+                }
+            }
+            else if(type == "sms")
+            {
+                if(!user.IsPhoneNumberVerified)
+                {
+                    throw new ArgumentException("Phone number is not verified.");
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Invalid type. Must be 'Email', 'Sms'.");
+            }
+
+            var otp = Helper.GenerateOtp();
+
+            var verification = new Verification
+            {
+                Code = otp,
+                Type = VerificationType.PasswordReset,
+                IsUsed = false,
+                CreatedAt = DateTime.UtcNow,
+                ExpireAt = DateTime.UtcNow.AddMinutes(5),
+                UserId = user.UserId
+            };
+
+            var isCreated = DataAccessFactory.VerificationData().Create(verification);
+            
+            if (!isCreated) return false;
+
+            if(type == "email")
+            {
+                ServiceFactory.EmailService.SendPasswordResetOtpEmail(user.Email, user.FullName, otp);
+                var auditLog = new AuditLogDTO
+                {
+                    UserId = user.UserId,
+                    Type = AuditLogType.PasswordResetEmailOtpRequested,
+                    Details = $"Password reset OTP sent to email for user ID {user.UserId}."
+                };
+                AuditLogService.LogActivity(auditLog);
+            }
+            else if (type == "sms")
+            {
+                await ServiceFactory.SmsService.SendSMSAsync(user.PhoneNumber, $"Your password reset OTP is {otp}. It is valid for 5 minutes.");
+                var auditLog = new AuditLogDTO
+                {
+                    UserId = user.UserId,
+                    Type = AuditLogType.PasswordResetSmsOtpRequested,
+                    Details = $"Password reset OTP sent to phone number for user ID {user.UserId}."
+                };
+                AuditLogService.LogActivity(auditLog);
+            }
+            return isCreated;
+        }
+
+        public static bool ResetPassword(PasswordResetDTO prd)
+        {
+            var verification = DataAccessFactory.VerificationFeaturesData().GetByCodeAndType(prd.ResetOtp, VerificationType.PasswordReset);
+
+            if (verification == null) return false;
+
+            var user = DataAccessFactory.UserFeaturesData().GetByEmail(prd.Email);
+
+            if (user == null) return false;
+
+            if(verification.UserId != user.UserId || verification.IsUsed || verification.ExpireAt < DateTime.UtcNow)
+            {
+                return false;
+            }
+
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(prd.NewPassword);
+            user.UpdatedAt = DateTime.Now;
+
+            var isUserUpdated = DataAccessFactory.UserData().Update(user);
+
+            if (isUserUpdated)
+            {
+                verification.IsUsed = true;
+                DataAccessFactory.VerificationData().Update(verification);
+
+                var auditLog = new AuditLogDTO()
+                {
+                    UserId = user.UserId,
+                    Type = AuditLogType.PasswordResetCompleted,
+                    Details = $"User '{user.FullName}' (ID: {user.UserId}) successfully reset their password."
+                };
+                AuditLogService.LogActivity(auditLog);
+
+                ServiceFactory.EmailService.SendNotificationEmail(
+                        user.Email,
+                        user.FullName,
+                        "Password Reset Alart",
+                        $"<p>Your password has been successfully reset. If you did not make this change, please contact support immediately.</p>"
+                );
+            }
+            return isUserUpdated;
+        }
     }
 }

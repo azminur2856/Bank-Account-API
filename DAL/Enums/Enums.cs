@@ -49,7 +49,8 @@ namespace DAL.Enums
         CompleateRegistrationActiveAccountAndVerifyEmail,
         EmailVrified,
         PhoneVerified,
-        PasswordResetRequested,
+        PasswordResetEmailOtpRequested,
+        PasswordResetSmsOtpRequested,
         PasswordResetCompleted,
         EmailVerificationLinkSent,
         PhoneVerificationCodeSent

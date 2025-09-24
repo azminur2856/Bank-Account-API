@@ -7,15 +7,12 @@ using System.Threading.Tasks;
 
 namespace BLL.DTOs
 {
-    public class PasswordResetDTO
+    public class PasswordResetRequestDTO
     {
         [Required]
         [StringLength(100, ErrorMessage = "Email cannot be more than 100 characters.")]
         [EmailAddress(ErrorMessage = "Invalid email format.")]
         public string Email { get; set; }
-        [Required]
-        public string ResetOtp { get; set; }
-        [Required]
-        public string NewPassword { get; set; }
+        public string Type { get; set; } = "Email";
     }
 }
