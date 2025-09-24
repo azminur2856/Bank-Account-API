@@ -262,6 +262,34 @@ namespace BLL.Services
             SendEmail(to, subject, body);
         }
 
+        // 9. Email Verification Email
+        public void SendVerifyEmail(string to, string fullName, string verificationLink)
+        {
+            string subject = "Verify Your Email Address";
+            string body = $@"
+            <div style='font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px;'>
+              <div style='max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);'>
+                <div style='background-color: #198754; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;'>
+                  <h2 style='color: #fff;'>Verify Your Email</h2>
+                </div>
+                <div style='padding: 20px;'>
+                  <p>Hello <strong>{fullName}</strong>,</p>
+                  <p>We noticed a request to verify your email address for <strong>ART Bank PLC</strong>. Please confirm your email by clicking the button below:</p>
+                  <p style='text-align: center;'>
+                    <a href='{verificationLink}' style='background: #198754; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 5px;'>Verify Email</a>
+                  </p>
+                  <p><strong>Note:</strong> This link will expire in <strong>1 hours</strong>.</p>
+                  <p>If you did not request this change, please ignore this email or contact our support team.</p>
+                  <p style='margin-top: 40px;'>Regards,<br><strong>ART Bank PLC Security Team</strong></p>
+                </div>
+                {Footer()}
+              </div>
+            </div>";
+
+            SendEmail(to, subject, body);
+        }
+
+
         // Shared Footer
         private string Footer()
         {

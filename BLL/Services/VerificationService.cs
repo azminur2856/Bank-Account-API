@@ -1,4 +1,5 @@
-﻿using BLL.DTOs;
+﻿using AutoMapper;
+using BLL.DTOs;
 using BLL.Utility;
 using DAL;
 using DAL.EF.Tables;
@@ -13,9 +14,21 @@ namespace BLL.Services
 {
     public class VerificationService
     {
+
+        public static Mapper GetMapper()
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<User, UserDTO>().ReverseMap();
+            });
+            return new Mapper(config);
+        }
+
         public static Task<bool> SendEmailVerificationLink(UserDTO user, bool isRegistration = false)
         {
             var vToken = Helper.GenerateToken();
+
+            var expireAt = isRegistration ? DateTime.UtcNow.AddHours(24) : DateTime.UtcNow.AddHours(1);
 
             var verification = new Verification
             {
@@ -23,7 +36,7 @@ namespace BLL.Services
                 Type = VerificationType.EmailVerification,
                 IsUsed = false,
                 CreatedAt = DateTime.UtcNow,
-                ExpireAt = DateTime.UtcNow.AddHours(24),
+                ExpireAt = expireAt,
                 UserId = user.UserId
             };
 
@@ -31,23 +44,29 @@ namespace BLL.Services
 
             if (!isCreated) return Task.FromResult(false);
 
-            var verificationLink = string.Empty;
+            string verificationLink;
 
             if (isRegistration)
             {
                 verificationLink = $"{ServiceFactory.ApiBaseUrl}/api/user/verifyaccount/{vToken}";
+                ServiceFactory.EmailService.SendActivationEmail(user.Email, user.FullName, verificationLink);
             }
-
-            verificationLink = $"{ServiceFactory.ApiBaseUrl}/api/user/verifyemail/{vToken}";
-
-            ServiceFactory.EmailService.SendActivationEmail(user.Email, user.FullName, verificationLink);
+            else
+            {
+                verificationLink = $"{ServiceFactory.ApiBaseUrl}/api/user/verifyemail/{vToken}";
+                ServiceFactory.EmailService.SendVerifyEmail(user.Email, user.FullName, verificationLink);
+            }
 
             var auditLog = new AuditLogDTO
             {
                 UserId = user.UserId,
                 Type = AuditLogType.EmailVerificationLinkSent,
-                Details = $"Verification email sent to {user.Email} with token {vToken}",
+                Details = isRegistration
+                    ? $"Account activation email sent to {user.Email} with token {vToken}"
+                    : $"Email verification link sent to {user.Email} with token {vToken}",
             };
+
+            AuditLogService.LogActivity(auditLog);
 
             return Task.FromResult(true);
         }
@@ -179,6 +198,74 @@ namespace BLL.Services
                 return isUserUpdated;
             }
             return false;
+        }
+
+        public static async Task<bool> SendEmailVerificationToken(string tokenKey) {
+            var token = DataAccessFactory.TokenData().Get(tokenKey);
+            if (token != null && token.ExpireAt == null)
+            {
+                var userRepo = DataAccessFactory.UserData();
+                var user = userRepo.Get(token.UserId);
+
+                if (user == null)
+                {
+                    throw new KeyNotFoundException("User not found.");
+                }
+
+                if (user.IsEmailVerified)
+                {
+                    throw new UnauthorizedAccessException("Email is already verified.");
+                }
+
+                var emailSend = await SendEmailVerificationLink((GetMapper().Map<UserDTO>(user)), false);
+
+                if (!emailSend)
+                {
+                    return false;
+                }
+                return emailSend;
+            }
+            return false;
+        }
+
+        public static bool VerifyEmail(string token)
+        {
+            var verification = DataAccessFactory.VerificationFeaturesData().GetByCodeAndType(token, VerificationType.EmailVerification);
+
+            if (verification == null) return false;
+
+            var userRepo = DataAccessFactory.UserData();
+            var user = userRepo.Get(verification.UserId);
+
+            if (user == null) return false;
+
+            user.IsEmailVerified = true;
+            user.UpdatedAt = DateTime.Now;
+
+            var isUserUpdated = userRepo.Update(user);
+
+            if (isUserUpdated)
+            {
+                verification.IsUsed = true;
+                DataAccessFactory.VerificationData().Update(verification);
+
+                var auditLog = new AuditLogDTO
+                {
+                    UserId = user.UserId,
+                    Type = AuditLogType.CompleateRegistrationActiveAccountAndVerifyEmail,
+                    Details = $"User email verified for {user.Email}",
+                };
+                AuditLogService.LogActivity(auditLog);
+            }
+
+            ServiceFactory.EmailService.SendCustomEmail(
+                user.Email,
+                user.FullName,
+                "Email Verified",
+                "Verification Successful",
+                $"<p>Your email has been successfully verified.</p><p>Thank you!</p>"
+            );
+            return isUserUpdated;
         }
     }
 }

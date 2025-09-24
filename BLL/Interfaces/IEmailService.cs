@@ -16,5 +16,6 @@ namespace BLL.Interfaces
         void SendCustomEmail(string to, string fullName, string subject, string headline, string messageBody);
         void SendCustomButtonEmail(string to, string fullName, string subject, string headline, string messageBody, string buttonText, string buttonLink);
         void SendNewAccountDetailsEmail(string to, string fullName, string accountNumber, string accountType, string openingBalance, string openingTime);
+        void SendVerifyEmail(string to, string fullName, string verificationLink);
     }
 }

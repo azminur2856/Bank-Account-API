@@ -65,7 +65,70 @@ namespace API.Controllers
                 var result = VerificationService.VerifyAccount(token);
                 if (result)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, "Email verified successfully. You can now log in.");
+                    return Request.CreateResponse(HttpStatusCode.OK, "Your account activated and email verified successfully. You can now log in.");
+                }
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid or expired verification link.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new
+                {
+                    Message = "An error occurred while activating account.",
+                    Error = ex.Message
+                });
+            }
+        }
+
+        [Logged]
+        [HttpPost]
+        [Route("sendemailverificationtoken")]
+        public async Task<HttpResponseMessage> SendEmailVerificationToken()
+        {
+            try
+            {
+                var header = Request.Headers.Authorization;
+                var result = await VerificationService.SendEmailVerificationToken(header.ToString());
+
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Email verification link sent successfully. Please check your email inbox.");
+                }
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Failed to send email verification link.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new
+                {
+                    Message = ex.Message
+                });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Unauthorized, new
+                {
+                    Message = ex.Message
+                });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new
+                {
+                    Message = "An error occurred while sending email verification link.",
+                    Error = ex.Message
+                });
+            }
+        }
+
+        [HttpGet]
+        [Route("verifyemail/{token}")]
+        public HttpResponseMessage VerifyEmail(string token)
+        {
+            try
+            {
+                var result = VerificationService.VerifyEmail(token);
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Email verified successfully.");
                 }
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid or expired verification link.");
             }
@@ -78,29 +141,6 @@ namespace API.Controllers
                 });
             }
         }
-        // TODO: sendemailverificationtoken
-        //[HttpGet]
-        //[Route("verifyemail/{token}")]
-        //public HttpResponseMessage VerifyEmail(string token)
-        //{
-        //    try
-        //    {
-        //        var result = VerificationService.VerifyEmail(token);
-        //        if (result)
-        //        {
-        //            return Request.CreateResponse(HttpStatusCode.OK, "Email verified successfully. You can now log in.");
-        //        }
-        //        return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid or expired verification link.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.InternalServerError, new
-        //        {
-        //            Message = "An error occurred while verifying the email.",
-        //            Error = ex.Message
-        //        });
-        //    }
-        //}
 
         [Logged]
         [HttpPost]
@@ -187,7 +227,7 @@ namespace API.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new
                 {
-                    Message = "An error occurred while changing the password.",
+                    Message = "An error occurred while sending phone verification otp.",
                     Error = ex.Message
                 });
             }
