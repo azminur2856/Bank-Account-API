@@ -89,6 +89,16 @@ namespace BLL.Services
             return false;
         }
 
+        public static string GetUserRoleByToken(string tokenKey)
+        {
+            var token = DataAccessFactory.TokenData().Get(tokenKey);
+            if (token != null && token.ExpireAt == null)
+            {
+                return token.User.Role.ToString(); ;
+            }
+            return null;
+        }
+
         public static bool Logout(string tokenKey)
         {
             var token = DataAccessFactory.TokenData().Get(tokenKey);

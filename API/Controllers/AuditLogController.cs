@@ -16,7 +16,8 @@ namespace API.Controllers
     public class AuditLogController : ApiController
     {
         [Logged]
-        [Admin]
+        //[Admin]
+        [Role("Admin", "Employee")]
         [HttpGet]
         [Route("all")]
         public HttpResponseMessage GetAllLogs()
