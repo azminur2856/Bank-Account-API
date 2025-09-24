@@ -77,6 +77,7 @@
     <Compile Include="DTOs\PasswordResetDTO.cs" />
     <Compile Include="DTOs\PasswordResetRequestDTO.cs" />
     <Compile Include="DTOs\TokenDTO.cs" />
+    <Compile Include="DTOs\UserAddressDTO.cs" />
     <Compile Include="Interfaces\IEmailService.cs" />
     <Compile Include="Interfaces\ISmsService.cs" />
     <Compile Include="ServiceFactory.cs" />

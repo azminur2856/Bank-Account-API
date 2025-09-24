@@ -20,6 +20,9 @@ namespace BLL.Services
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Address, AddressDTO>().ReverseMap();
+                cfg.CreateMap<User, UserAddressDTO>().ReverseMap();
+                cfg.CreateMap<Address, UserAddressDTO>().ReverseMap();
+                
             });
             return new Mapper(config);
         }
@@ -140,6 +143,21 @@ namespace BLL.Services
             var addresses = DataAccessFactory.AddressFeaturesData().GetByUserId(token.UserId);
             return GetMapper().Map<List<AddressDTO>>(addresses);
         }
+
+        //public static UserAddressDTO GetUserAndAddresses(string tokenKey)
+        //{
+        //    var token = DataAccessFactory.TokenData().Get(tokenKey);
+        //    if (token == null || token.ExpireAt != null) return null;
+
+        //    //var user = DataAccessFactory.UserData().Get(token.UserId);
+
+        //    var addresses = DataAccessFactory.AddressFeaturesData().GetByUserId(token.UserId);
+        //    var user = addresses.FirstOrDefault()?.User;
+
+        //    var userData = GetMapper().Map<UserAddressDTO>(user);
+        //    userData.Addresses = GetMapper().Map<List<AddressDTO>>(addresses);
+        //    return userData;
+        //}
 
         public static bool VerifyAddress(string tokenKey, int addressId)
         {
