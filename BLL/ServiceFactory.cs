@@ -14,12 +14,14 @@ namespace BLL
         public static IEmailService EmailService { get; private set; }
         public static ISmsService SmsService { get; private set; }
         public static string ApiBaseUrl { get; private set; }
+        public static string BankMasterAccountNumber { get; private set; }
 
-        public static void Init(EmailSecretDTO emailSecret, SmsSecretDTO smsSecret, string apiBaseUrl)
+        public static void Init(EmailSecretDTO emailSecret, SmsSecretDTO smsSecret, string apiBaseUrl, string bankMasterAccountNumber)
         {
             EmailService = new EmailService(emailSecret);
             SmsService = new SmsService(smsSecret);
             ApiBaseUrl = apiBaseUrl;
+            BankMasterAccountNumber = bankMasterAccountNumber;
         }
     }
 }

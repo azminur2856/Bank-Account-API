@@ -47,7 +47,10 @@ namespace API
             // Get API base URL from environment variables
             string apiBaseUrl = Env.GetString("API_BASE_URL");
 
-            ServiceFactory.Init(emailSecret, smsSecret, apiBaseUrl);
+            // Get Bank Master Account Number from environment variables
+            string bankMasterAccountNumber = Env.GetString("BANK_MASTER_ACCOUNT_NUMBER");
+
+            ServiceFactory.Init(emailSecret, smsSecret, apiBaseUrl, bankMasterAccountNumber);
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
