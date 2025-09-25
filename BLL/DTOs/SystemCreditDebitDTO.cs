@@ -7,15 +7,10 @@ using System.Threading.Tasks;
 
 namespace BLL.DTOs
 {
-    public class DepositDTO
+    public class SystemCreditDebitDTO
     {
         [Required]
-        public string DestinationAccountNumber { get; set; }
-
-        [Required]
-        [Range(1000, 500000, ErrorMessage = "Deposit amount must be between 1,000 and 500,000.")]
+        [Range(10000000, 1000000000, ErrorMessage = "Amount must be between 10,000,000 and 1,000,000,000.")]
         public decimal Amount { get; set; }
-
-        public decimal? Fees { get; set; } = 0;
     }
 }

@@ -69,7 +69,10 @@ namespace DAL.Enums
         AccountCreatedByEmployee,
         AccountCreatedByCustomer,
         AccountActivatedByAdmin,
-        AccountActivatedByEmployee
+        AccountActivatedByEmployee,
+        SystemCredit,
+        SystemDebit,
+        TransferFee
     }
 
     public enum AddressType

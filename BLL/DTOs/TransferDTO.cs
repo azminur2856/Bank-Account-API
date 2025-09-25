@@ -16,10 +16,9 @@ namespace BLL.DTOs
         public string DestinationAccountNumber { get; set; }
 
         [Required]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Amount must be a positive value.")]
+        [Range(50, 25000, ErrorMessage = "Transfer amount must be between 50 and 250,000.")]
         public decimal Amount { get; set; }
 
-        [Range(0.0, double.MaxValue, ErrorMessage = "Fees must be a non-negative value.")]
         public decimal? Fees { get; set; } = 0;
     }
 }

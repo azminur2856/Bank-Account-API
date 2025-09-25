@@ -13,10 +13,9 @@ namespace BLL.DTOs
         public string SourceAccountNumber { get; set; }
 
         [Required]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Amount must be a positive value.")]
+        [Range(500, 50000, ErrorMessage = "Withdrawa amount must be between 500 and 50,000.")]
         public decimal Amount { get; set; }
 
-        [Range(0.0, double.MaxValue, ErrorMessage = "Fees must be a non-negative value.")]
         public decimal? Fees { get; set; } = 0;
     }
 }
