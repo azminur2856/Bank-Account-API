@@ -67,9 +67,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\AccountCreateDTO.cs" />
     <Compile Include="DTOs\AddressAddDTO.cs" />
     <Compile Include="DTOs\AddressDTO.cs" />
     <Compile Include="DTOs\AuditLogDTO.cs" />
+    <Compile Include="DTOs\DepositDTO.cs" />
     <Compile Include="DTOs\EmailDTO.cs" />
     <Compile Include="DTOs\LoginDTO.cs" />
     <Compile Include="DTOs\OtpDTO.cs" />
@@ -78,8 +80,10 @@
     <Compile Include="DTOs\PasswordResetRequestDTO.cs" />
     <Compile Include="DTOs\RoleChangeDTO.cs" />
     <Compile Include="DTOs\TokenDTO.cs" />
+    <Compile Include="DTOs\TransferDTO.cs" />
     <Compile Include="DTOs\UserAddressDTO.cs" />
     <Compile Include="DTOs\UserStatusChangeDTO.cs" />
+    <Compile Include="DTOs\WithdrawalDTO.cs" />
     <Compile Include="Interfaces\IEmailService.cs" />
     <Compile Include="Interfaces\ISmsService.cs" />
     <Compile Include="ServiceFactory.cs" />
@@ -94,6 +98,8 @@
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\SmsService.cs" />
+    <Compile Include="Services\TransactionDTO.cs" />
+    <Compile Include="Services\TransactionService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\VerificationService.cs" />
     <Compile Include="Utility\Helper.cs" />

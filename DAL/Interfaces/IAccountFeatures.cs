@@ -10,5 +10,6 @@ namespace DAL.Interfaces
     public interface IAccountFeatures
     {
         Account GetLastAccount();
+        List<Account> GetByUserId(int userId);
     }
 }

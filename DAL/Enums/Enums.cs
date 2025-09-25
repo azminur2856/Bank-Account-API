@@ -60,7 +60,16 @@ namespace DAL.Enums
         AddressVerified,
         RoleChangedToCustomer,
         UserActivated,
-        UserDeactivated
+        UserDeactivated,
+        Deposit,
+        Withdrawal,
+        Transfer,
+        SystemTransaction,
+        AccountCreatedByAdmin,
+        AccountCreatedByEmployee,
+        AccountCreatedByCustomer,
+        AccountActivatedByAdmin,
+        AccountActivatedByEmployee
     }
 
     public enum AddressType

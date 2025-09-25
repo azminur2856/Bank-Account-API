@@ -41,6 +41,13 @@ namespace DAL.Repos
             return db.Accounts.ToList();
         }
 
+        public List<Account> GetByUserId(int userId)
+        {
+            return db.Accounts
+                     .Where(a => a.UserId == userId)
+                     .ToList();
+        }
+
         public Account GetLastAccount()
         {
             return db.Accounts
