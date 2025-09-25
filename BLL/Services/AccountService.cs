@@ -6,6 +6,7 @@ using DAL.EF.Tables;
 using DAL.Enums;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -136,6 +137,8 @@ namespace BLL.Services
 
             var createdAccount = DataAccessFactory.AccountData().Create(newAccount);
 
+            string balanceFormatted = "TK " + createdAccount.Balance.ToString("N2", CultureInfo.InvariantCulture);
+
             if (createdAccount != null)
             {
                 ServiceFactory.EmailService.SendNewAccountDetailsEmail(
@@ -143,7 +146,7 @@ namespace BLL.Services
                     userToCreateAccountFor.FullName,
                     createdAccount.AccountNumber,
                     createdAccount.Type.ToString(),
-                    createdAccount.Balance.ToString("C"),
+                    balanceFormatted,
                     createdAccount.CreatedAt.ToString("g")
                 );
 

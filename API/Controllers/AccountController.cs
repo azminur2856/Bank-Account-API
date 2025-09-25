@@ -74,12 +74,12 @@ namespace API.Controllers
         [HttpPost]
         [Route("activate/{accountNumber}")]
         [Role("Employee")]
-        public HttpResponseMessage ActivateAccount(string accountId)
+        public HttpResponseMessage ActivateAccount(string accountNumber)
         {
             try
             {
                 var header = Request.Headers.Authorization;
-                var result = AccountService.ActivateAccount(header.ToString(), accountId);
+                var result = AccountService.ActivateAccount(header.ToString(), accountNumber);
                 if (result)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, "Account activated successfully.");
