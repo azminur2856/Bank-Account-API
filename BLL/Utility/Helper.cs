@@ -1,4 +1,5 @@
-﻿using DnsClient;
+﻿using DAL.EF.Tables;
+using DnsClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,6 +83,23 @@ namespace BLL.Utility
             {
                 return false;
             }
+        }
+
+        public static string GenerateNewAccountNumber(Account lastAccount)
+        {
+            string prefix = "2313";
+            long startNumber = 1;
+
+            if (lastAccount == null)
+            {
+                return prefix + startNumber.ToString("D9");
+            }
+
+            string lastNumberStr = lastAccount.AccountNumber.Substring(4);
+            long lastNumber = long.Parse(lastNumberStr);
+            long newNumber = lastNumber + 1;
+
+            return prefix + newNumber.ToString("D9");
         }
     }
 }
