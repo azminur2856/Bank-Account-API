@@ -91,6 +91,10 @@
     <Compile Include="Migrations\202509241946187_AddAddressTable.Designer.cs">
       <DependentUpon>202509241946187_AddAddressTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202509250618217_UpdateTransactionTable.cs" />
+    <Compile Include="Migrations\202509250618217_UpdateTransactionTable.Designer.cs">
+      <DependentUpon>202509250618217_UpdateTransactionTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\AccountRepo.cs" />
@@ -123,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202509241946187_AddAddressTable.resx">
       <DependentUpon>202509241946187_AddAddressTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509250618217_UpdateTransactionTable.resx">
+      <DependentUpon>202509250618217_UpdateTransactionTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
