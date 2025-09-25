@@ -567,5 +567,33 @@ namespace API.Controllers
                 });
             }
         }
+
+        [Logged]
+        [HttpGet]
+        [Route("account/all")]
+        public HttpResponseMessage GetAllUserAccount()
+        {
+            try
+            {
+                var header = Request.Headers.Authorization;
+                var accounts = AccountService.GetUserAccounts(header.ToString());
+                if (accounts == null || !accounts.Any())
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, new
+                    {
+                        Message = "No account found for this user."
+                    });
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, accounts);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new
+                {
+                    Message = "An unexpected error occurred.",
+                    Error = ex.Message
+                });
+            }
+        }
     }
 }

@@ -242,9 +242,21 @@ namespace BLL.Services
             return isUpdated != null;
         }
 
-        public static List<AccountDTO> Get()
+        public static List<AccountDTO> GetAccounts(string tokenKey)
         {
-            return GetMapper().Map<List<AccountDTO>>(DataAccessFactory.AccountData().Get());
+            var token = DataAccessFactory.TokenData().Get(tokenKey);
+            if (token == null || token.ExpireAt != null) return null;
+            
+            var accounts = DataAccessFactory.AccountData().Get();
+           
+            return GetMapper().Map<List<AccountDTO>>(accounts);
+        }
+
+        public static List<AccountDTO> GetUserAccounts(string tokenKey)
+        {
+            var token = DataAccessFactory.TokenData().Get(tokenKey);
+            if (token == null || token.ExpireAt != null) return null;
+            return GetMapper().Map<List<AccountDTO>>(DataAccessFactory.AccountFeaturesData().GetByUserId(token.UserId));
         }
 
         public static AccountDTO Get(string AccountNumber)
