@@ -445,5 +445,127 @@ namespace API.Controllers
                 });
             }
         }
+
+        [HttpPost]
+        [Route("change-role")]
+        [Role("Admin")]
+        public HttpResponseMessage ChangeUserRole(RoleChangeDTO roleChange)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = "Validation failed.",
+                    Errors = errors
+                });
+            }
+
+            try
+            {
+                var header = Request.Headers.Authorization;
+                var result = UserService.ChangeUserRole(header.ToString(), roleChange);
+
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "User role changed and notification email sent successfully.");
+                }
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Failed to change user role.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new
+                {
+                    Message = ex.Message
+                });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Unauthorized, new
+                {
+                    Message = ex.Message
+                });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new 
+                { 
+                    Message = ex.Message 
+                });
+            }
+            catch (ArgumentException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = ex.Message
+                });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new
+                {
+                    Message = "An unexpected error occurred.",
+                    Error = ex.Message
+                });
+            }
+        }
+
+        [Logged]
+        [HttpPost]
+        [Route("change-status")]
+        [Role("Admin", "Employee")]
+        public HttpResponseMessage ChangeUserStatus(UserStatusChangeDTO statusChangeDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = "Validation failed.",
+                    Errors = errors
+                });
+            }
+
+            try
+            {
+                var header = Request.Headers.Authorization;
+                var result = UserService.ChangeUserStatus(header.ToString(), statusChangeDTO);
+
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "User status changed successfully and notification email sent.");
+                }
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Failed to change user status.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new 
+                { 
+                    Message = ex.Message 
+                });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Unauthorized, new
+                {
+                    Message = ex.Message
+                });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = ex.Message
+                });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new
+                {
+                    Message = "An unexpected error occurred.",
+                    Error = ex.Message
+                });
+            }
+        }
     }
 }

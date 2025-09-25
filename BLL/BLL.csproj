@@ -76,8 +76,10 @@
     <Compile Include="DTOs\PasswordChangeDTO.cs" />
     <Compile Include="DTOs\PasswordResetDTO.cs" />
     <Compile Include="DTOs\PasswordResetRequestDTO.cs" />
+    <Compile Include="DTOs\RoleChangeDTO.cs" />
     <Compile Include="DTOs\TokenDTO.cs" />
     <Compile Include="DTOs\UserAddressDTO.cs" />
+    <Compile Include="DTOs\UserStatusChangeDTO.cs" />
     <Compile Include="Interfaces\IEmailService.cs" />
     <Compile Include="Interfaces\ISmsService.cs" />
     <Compile Include="ServiceFactory.cs" />

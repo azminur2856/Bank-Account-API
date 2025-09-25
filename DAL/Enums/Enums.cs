@@ -45,7 +45,7 @@ namespace DAL.Enums
         TransactionPerformed,
         UpdateAccountType,
         PasswordChanged,
-        RoleChanged,
+        RoleChangedToEmployee,
         CompleateRegistrationActiveAccountAndVerifyEmail,
         EmailVrified,
         PhoneVerified,
@@ -57,7 +57,10 @@ namespace DAL.Enums
         PresentAddressAdded,
         PermanentAddressAdded,
         PresentAddressUpdated,
-        AddressVerified
+        AddressVerified,
+        RoleChangedToCustomer,
+        UserActivated,
+        UserDeactivated
     }
 
     public enum AddressType

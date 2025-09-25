@@ -289,6 +289,22 @@ namespace BLL.Services
             SendEmail(to, subject, body);
         }
 
+        public void SendAccountActivatedEmail(string to, string fullName)
+        {
+            string subject = "Your Account Has Been Activated";
+            string headline = "Account Activated!";
+            string messageBody = $"<p>Dear <strong>{fullName}</strong>,</p><p>We are pleased to inform you that your account has been activated. You now have full access to our services. Welcome back!</p><p>If you have any questions, please contact our support team.</p>";
+            SendCustomEmail(to, fullName, subject, headline, messageBody);
+        }
+
+        public void SendAccountDeactivatedEmail(string to, string fullName)
+        {
+            string subject = "Important: Your Account Has Been Deactivated";
+            string headline = "Account Deactivated";
+            string messageBody = $"<p>Dear <strong>{fullName}</strong>,</p><p>This is an important notice regarding your account. Your account has been temporarily deactivated due to a policy violation. Please contact our support team to resolve this issue and reactivate your account.</p>";
+            SendCustomEmail(to, fullName, subject, headline, messageBody);
+        }
+
 
         // Shared Footer
         private string Footer()
