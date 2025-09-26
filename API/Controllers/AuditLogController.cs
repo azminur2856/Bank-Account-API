@@ -44,6 +44,8 @@ namespace API.Controllers
             }
         }
 
+        [Logged]
+        [Role("Admin", "Employee")]
         [HttpGet]
         [Route("bytype/{type}")]
         public HttpResponseMessage GetLogsByType(string type)
@@ -78,6 +80,8 @@ namespace API.Controllers
             }
         }
 
+        [Logged]
+        [Role("Admin", "Employee")]
         [HttpGet]
         [Route("bydaterange/{startDate}/{endDate}")]
         public HttpResponseMessage GetLogsByDateRange(DateTime startDate, DateTime endDate)
@@ -111,6 +115,8 @@ namespace API.Controllers
             }
         }
 
+        [Logged]
+        [Role("Admin", "Employee")]
         [HttpPost]
         [Route("byuseremail")]
         public HttpResponseMessage GetLogsByUserEmail(EmailDTO email)
