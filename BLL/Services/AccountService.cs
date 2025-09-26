@@ -264,5 +264,78 @@ namespace BLL.Services
             return GetMapper().Map<AccountDTO>(DataAccessFactory.AccountData().Get(AccountNumber));
         }
 
+        public static bool CollectSemiAnnualMaintenanceFee()
+        {
+            var accountsRepo = DataAccessFactory.AccountData();
+            var allAccounts = accountsRepo.Get();
+            var bankMasterAccount = accountsRepo.Get(ServiceFactory.BankMasterAccountNumber);
+
+            if (bankMasterAccount == null)
+            {
+                throw new KeyNotFoundException("Bank master account not found.");
+            }
+
+            decimal totalFeesCollected = 0m;
+            int feesAppliedCount = 0;
+            decimal maintenanceFee = ServiceFactory.SemiAnnualMaintenanceFee;
+
+            foreach (var account in allAccounts.Where(a => a.IsActive && a.Type != AccountType.Master))
+            {
+                account.Balance -= maintenanceFee;
+                accountsRepo.Update(account);
+
+                bankMasterAccount.Balance += maintenanceFee;
+                accountsRepo.Update(bankMasterAccount);
+
+                totalFeesCollected += maintenanceFee;
+                feesAppliedCount++;
+
+                var feeTransaction = new Transaction
+                {
+                    SourceAccountId = account.AccountId,
+                    DestinationAccountId = bankMasterAccount.AccountId,
+                    Amount = maintenanceFee,
+                    Fees = 0,
+                    Type = TransactionType.SystemDebit,
+                    SourceType = TransactionType.SystemDebit,
+                    DestinationType = TransactionType.SystemCredit,
+                    PerformedBy = bankMasterAccount.UserId,
+                    CreatedAt = DateTime.Now
+                };
+                DataAccessFactory.TransactionData().Create(feeTransaction);
+
+                string subject = "Semi-Annual Account Maintenance Fee Charged";
+                string headline = "Account Charge Notification";
+                string messageBody = $"<p>A semi-annual maintenance fee of **TK {maintenanceFee:N2}** has been applied to your account (**{account.AccountNumber}**).</p><p>This is a standard charge for account maintenance, effective every six months. Your updated balance is TK {account.Balance:N2}.</p>";
+
+                ServiceFactory.EmailService.SendCustomEmail(
+                    account.User.Email,
+                    account.User.FullName,
+                    subject,
+                    headline,
+                    messageBody
+                );
+
+                var auditLog = new AuditLogDTO
+                {
+                    UserId = account.UserId,
+                    Type = AuditLogType.SystemDebit,
+                    Details = $"Semi-annual maintenance fee charge of {maintenanceFee} applied to account '{account.AccountNumber}'. Notification email sent.",
+                };
+                AuditLogService.LogActivity(auditLog);
+            }
+
+            if (feesAppliedCount > 0)
+            {
+                var systemLog = new AuditLogDTO
+                {
+                    UserId = bankMasterAccount.UserId,
+                    Type = AuditLogType.SystemTransaction,
+                    Details = $"Semi-annual maintenance fee collection completed. Charged {feesAppliedCount} accounts, totaling {totalFeesCollected} in fees.",
+                };
+                AuditLogService.LogActivity(systemLog);
+            }
+            return feesAppliedCount > 0;
+        }
     }
 }

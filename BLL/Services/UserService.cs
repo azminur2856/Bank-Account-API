@@ -99,16 +99,21 @@ namespace BLL.Services
 
                 if(isUpdated)
                 {
+                    DataAccessFactory.TokenFeaturesData().ExpireAllByUserId(user.UserId);
                     var auditLog = new AuditLogDTO
                     {
                         UserId = user.UserId,
                         Type = AuditLogType.PasswordChanged,
-                        Details = $"User '{user.FullName}' (ID: {user.UserId}) changed their password at {DateTime.Now:yyyy-MM-dd HH:mm:ss}.",
+                        Details = $"User '{user.FullName}' (ID: {user.UserId}) changed their password at {DateTime.Now:yyyy-MM-dd HH:mm:ss}. All sessions expired.",
                     };
                     AuditLogService.LogActivity(auditLog);
-                    // this just logout the current session
-                    AuthService.Logout(tokenKey);
-                    // TODO: Need to implement forced logout from all other sessions
+
+                    ServiceFactory.EmailService.SendNotificationEmail(
+                        user.Email,
+                        user.FullName,
+                        "Password Changed Successfully",
+                        $"<p>Your password has been changed successfully. If you did not request this change, please contact our support team immediately.</p>"
+                    );
                 }
                 return isUpdated;
             }

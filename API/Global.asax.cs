@@ -53,8 +53,11 @@ namespace API
             // Get Transfer Fee from environment variables
             string transferFeeString = Env.GetString("TRANSFER_FEE");
             decimal transferFee = Convert.ToDecimal(transferFeeString);
+            // Get Monthly Maintenance Fee from environment variables
+            string semiAnnualMaintenanceFeeString = Env.GetString("SEMI_ANNUAL_MAINTENANCE_FEE");
+            decimal semiAnnualMaintenanceFee = Convert.ToDecimal(semiAnnualMaintenanceFeeString);
 
-            ServiceFactory.Init(emailSecret, smsSecret, apiBaseUrl, bankMasterAccountNumber, transferFee);
+            ServiceFactory.Init(emailSecret, smsSecret, apiBaseUrl, bankMasterAccountNumber, transferFee, semiAnnualMaintenanceFee);
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }

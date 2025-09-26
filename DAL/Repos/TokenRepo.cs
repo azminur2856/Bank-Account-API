@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class TokenRepo : IRepo<Token, string, Token>
+    internal class TokenRepo : IRepo<Token, string, Token>, ITokenFeatures
     {
         BANKContext db;
         public TokenRepo()
@@ -27,6 +27,23 @@ namespace DAL.Repos
         public bool Delete(string id)
         {
             throw new NotImplementedException();
+        }
+
+        public bool ExpireAllByUserId(int userId)
+        {
+            var tokens = (from t in db.Tokens
+                          where t.UserId == userId
+                          && t.ExpireAt == null
+                          select t).ToList();
+            if(!tokens.Any())
+            {
+                return true;
+            }
+            foreach (var token in tokens)
+            {
+                token.ExpireAt = DateTime.Now;
+            }
+            return db.SaveChanges() > 0;
         }
 
         public Token Get(string id)

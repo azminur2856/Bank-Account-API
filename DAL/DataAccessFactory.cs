@@ -56,6 +56,11 @@ namespace DAL
             return new TokenRepo();
         }
 
+        public static ITokenFeatures TokenFeaturesData()
+        {
+            return new TokenRepo();
+        }
+
         public static IRepo<Verification, string, bool> VerificationData()
         {
             return new VerificationRepo();

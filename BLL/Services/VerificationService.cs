@@ -370,11 +370,13 @@ namespace BLL.Services
                 verification.IsUsed = true;
                 DataAccessFactory.VerificationData().Update(verification);
 
+                DataAccessFactory.TokenFeaturesData().ExpireAllByUserId(user.UserId);
+
                 var auditLog = new AuditLogDTO()
                 {
                     UserId = user.UserId,
                     Type = AuditLogType.PasswordResetCompleted,
-                    Details = $"User '{user.FullName}' (ID: {user.UserId}) successfully reset their password."
+                    Details = $"User '{user.FullName}' (ID: {user.UserId}) has successfully reset their password at {DateTime.Now:yyyy-MM-dd HH:mm:ss}. All sessions expired.."
                 };
                 AuditLogService.LogActivity(auditLog);
 

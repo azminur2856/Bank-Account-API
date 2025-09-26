@@ -38,6 +38,34 @@ namespace DAL.Repos
             return db.AuditLogs.ToList();
         }
 
+        public List<AuditLog> GetAll(int page, int pageSize, string sortBy, bool isDescending)
+        {
+            var query = db.AuditLogs.AsQueryable();
+
+            switch (sortBy.ToLowerInvariant())
+            {
+                case "logid":
+                    query = isDescending ? query.OrderByDescending(l => l.LogId) : query.OrderBy(l => l.LogId);
+                    break;
+                case "userid":
+                    query = isDescending ? query.OrderByDescending(l => l.UserId) : query.OrderBy(l => l.UserId);
+                    break;
+                case "type":
+                    query = isDescending ? query.OrderByDescending(l => l.Type) : query.OrderBy(l => l.Type);
+                    break;
+                case "timestamp":
+                default:
+                    query = isDescending ? query.OrderByDescending(l => l.Timestamp) : query.OrderBy(l => l.Timestamp);
+                    break;
+
+            }
+
+            query = query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize);
+            return query.ToList();
+        }
+
         public List<AuditLog> GetByDateRange(DateTime startDate, DateTime endDate)
         {
             var logs = (from l in db.AuditLogs

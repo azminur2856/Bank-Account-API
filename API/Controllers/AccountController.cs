@@ -142,5 +142,38 @@ namespace API.Controllers
                 });
             }
         }
+
+        [Logged]
+        [HttpPost]
+        [Route("collect-semi-annual-fee")]
+        [Role("Admin")]
+        public HttpResponseMessage CollectSemiAnnualFee()
+        {
+            try
+            {
+                var result = AccountService.CollectSemiAnnualMaintenanceFee();
+
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Semi-annual maintenance fees collected successfully from active accounts.");
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, "Semi-annual maintenance run completed. No fees were required or accounts processed.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new
+                {
+                    Message = ex.Message
+                });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new
+                {
+                    Message = "An unexpected error occurred during semi-annual fee collection.",
+                    Error = ex.Message
+                });
+            }
+        }
     }
 }

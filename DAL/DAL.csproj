@@ -67,6 +67,7 @@
     <Compile Include="Interfaces\IAddressFeatures.cs" />
     <Compile Include="Interfaces\IAuditLogFeatures.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
+    <Compile Include="Interfaces\ITokenFeatures.cs" />
     <Compile Include="Interfaces\ITransactionFeatures.cs" />
     <Compile Include="Interfaces\IUserFeatures.cs" />
     <Compile Include="Interfaces\IVerificationFeatures.cs" />

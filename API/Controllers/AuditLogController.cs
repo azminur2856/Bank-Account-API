@@ -20,19 +20,26 @@ namespace API.Controllers
         [Role("Admin", "Employee")]
         [HttpGet]
         [Route("all")]
-        public HttpResponseMessage GetAllLogs()
+        public HttpResponseMessage GetAllLogs(int page = 1, int pageSize = 25, string sortBy = "Timestamp", bool isDescending = true)
         {
             try
             {
-                var logs = AuditLogService.Get();
+                var logs = AuditLogService.Get(page, pageSize, sortBy, isDescending);
                 if (logs == null || !logs.Any())
                 {
                     return Request.CreateResponse(HttpStatusCode.NotFound, new
                     {
-                        Message = "No audit logs foud."
+                        Message = "No audit logs found for the specified criteria."
                     });
                 }
-                return Request.CreateResponse(HttpStatusCode.OK, logs);
+                return Request.CreateResponse(HttpStatusCode.OK, new
+                {
+                    Page = page,
+                    PageSize = pageSize,
+                    SortBy = sortBy,
+                    IsDescending = isDescending,
+                    Logs = logs
+                });
             }
             catch (Exception ex)
             {

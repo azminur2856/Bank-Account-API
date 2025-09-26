@@ -13,5 +13,6 @@ namespace DAL.Interfaces
         List<AuditLog> GetByType(AuditLogType type);
         List<AuditLog> GetByDateRange(DateTime startDate, DateTime endDate);
         List<AuditLog> GetByUserEmail(string email);
+        List<AuditLog> GetAll(int page, int pageSize, string sortBy, bool isDescending);
     }
 }

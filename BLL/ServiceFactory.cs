@@ -17,16 +17,18 @@ namespace BLL
         public static ISmsService SmsService { get; private set; }
         public static string ApiBaseUrl { get; private set; }
         public static string BankMasterAccountNumber { get; private set; }
+        public static decimal SemiAnnualMaintenanceFee { get; private set; }
         public static decimal TransferFee { get; private set; }
         public static Dictionary<AccountType, decimal> MinimumBalances { get; private set; }
 
-        public static void Init(EmailSecretDTO emailSecret, SmsSecretDTO smsSecret, string apiBaseUrl, string bankMasterAccountNumber, decimal transferFee)
+        public static void Init(EmailSecretDTO emailSecret, SmsSecretDTO smsSecret, string apiBaseUrl, string bankMasterAccountNumber, decimal transferFee, decimal semiAnnualMaintenanceFee)
         {
             EmailService = new EmailService(emailSecret);
             SmsService = new SmsService(smsSecret);
             ApiBaseUrl = apiBaseUrl;
             BankMasterAccountNumber = bankMasterAccountNumber;
             TransferFee = transferFee;
+            SemiAnnualMaintenanceFee = semiAnnualMaintenanceFee;
             MinimumBalances = DataAccessFactory.AccountPolicyFeaturesData().GetMinimumBalances();
         }
     }

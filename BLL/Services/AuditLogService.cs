@@ -30,9 +30,14 @@ namespace BLL.Services
             return DataAccessFactory.AuditLogData().Create(auditLog);
         }
 
-        public static List<AuditLogDTO> Get()
+        public static List<AuditLogDTO> Get(int page = 1, int pageSize = 25, string sortBy = "Timestamp", bool isDescending = true)
         {
-            return GetMapper().Map<List<AuditLogDTO>>(DataAccessFactory.AuditLogData().Get());
+            if(page < 1) page = 1;
+            if(pageSize > 100) pageSize = 100;
+
+            var logs = DataAccessFactory.AuditLogFeaturesData().GetAll(page, pageSize, sortBy, isDescending);
+
+            return GetMapper().Map<List<AuditLogDTO>>(logs);
         }
 
         public static (bool isValid, List<AuditLogDTO> logs, List<string> valueTypes) GetByType(string type)
