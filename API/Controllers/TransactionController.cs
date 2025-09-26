@@ -63,7 +63,7 @@ namespace API.Controllers
         [Logged]
         [HttpPost]
         [Route("withdrawal")]
-        [Role("Customer")]
+        [Role("Employee", "Customer")]
         public HttpResponseMessage Withdrawal(WithdrawalDTO withdrawalDTO)
         {
             if (!ModelState.IsValid)
@@ -110,7 +110,7 @@ namespace API.Controllers
         [Logged]
         [HttpPost]
         [Route("transfer")]
-        [Role("Customer")]
+        [Role("Employee", "Customer")]
         public HttpResponseMessage Transfer(TransferDTO transferDTO)
         {
             if (!ModelState.IsValid)

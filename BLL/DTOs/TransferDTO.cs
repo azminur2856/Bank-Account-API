@@ -16,7 +16,7 @@ namespace BLL.DTOs
         public string DestinationAccountNumber { get; set; }
 
         [Required]
-        [Range(50, 25000, ErrorMessage = "Transfer amount must be between 50 and 250,000.")]
+        [Range(50, 25000, ErrorMessage = "Transfer amount must be between 50 and 25,000.")]
         public decimal Amount { get; set; }
 
         public decimal? Fees { get; set; } = 0;

@@ -274,7 +274,7 @@ namespace BLL.Services
             }
             if (!CheckMinimumBalance(sourceAccount, withdrawalDTO.Amount, 0))
             {
-                throw new InvalidOperationException("Insufficient balance in the source account.");
+                throw new InvalidOperationException($"Insufficient balance. A withdrwal of {withdrawalDTO.Amount} requires a minimum balance of {MINIMUM_BALANCES[sourceAccount.Type]} after the transaction.");
             }
 
             sourceAccount.Balance -= withdrawalDTO.Amount;
