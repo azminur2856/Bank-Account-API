@@ -79,6 +79,9 @@
     <Compile Include="DTOs\PasswordResetDTO.cs" />
     <Compile Include="DTOs\PasswordResetRequestDTO.cs" />
     <Compile Include="DTOs\RoleChangeDTO.cs" />
+    <Compile Include="DTOs\StatementDTOs.cs" />
+    <Compile Include="DTOs\StatementRequestDTO.cs" />
+    <Compile Include="DTOs\StatementTransactionDTO.cs" />
     <Compile Include="DTOs\SystemCreditDebitDTO.cs" />
     <Compile Include="DTOs\TokenDTO.cs" />
     <Compile Include="DTOs\TransactionDTO.cs" />
@@ -100,6 +103,7 @@
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\SmsService.cs" />
+    <Compile Include="Services\StatementService.cs" />
     <Compile Include="Services\TransactionService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\VerificationService.cs" />

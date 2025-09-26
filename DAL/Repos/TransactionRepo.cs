@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class TransactionRepo : IRepo<Transaction, int, bool>
+    internal class TransactionRepo : IRepo<Transaction, int, bool> , ITransactionFeatures
     {
         BANKContext db;
         public TransactionRepo()
@@ -36,6 +36,14 @@ namespace DAL.Repos
         public List<Transaction> Get()
         {
             return db.Transactions.ToList();
+        }
+
+        public List<Transaction> GetByAccountAndDateRange(int accountId, DateTime startDate, DateTime endDate)
+        {
+            return db.Transactions
+                     .Where(t => (t.SourceAccountId == accountId || t.DestinationAccountId == accountId) &&
+                                 t.CreatedAt >= startDate && t.CreatedAt <= endDate)
+                     .ToList();
         }
 
         public bool Update(Transaction obj)

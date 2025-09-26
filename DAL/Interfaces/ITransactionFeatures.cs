@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    public interface IAccountFeatures
+    public interface ITransactionFeatures
     {
-        Account GetLastAccount();
-        List<Account> GetByUserId(int userId);
-        Account GetById(int accountId);
+        List<Transaction> GetByAccountAndDateRange(int accountId, DateTime startDate, DateTime endDate);
     }
 }

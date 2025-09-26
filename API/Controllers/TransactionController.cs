@@ -40,15 +40,24 @@ namespace API.Controllers
             }
             catch (KeyNotFoundException ex)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, new { Message = ex.Message });
+                return Request.CreateResponse(HttpStatusCode.NotFound, new 
+                { 
+                    Message = ex.Message
+                });
             }
             catch (InvalidOperationException ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { Message = ex.Message });
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = ex.Message
+                });
             }
             catch (UnauthorizedAccessException ex)
             {
-                return Request.CreateResponse(HttpStatusCode.Unauthorized, new { Message = ex.Message });
+                return Request.CreateResponse(HttpStatusCode.Unauthorized, new
+                {
+                    Message = ex.Message
+                });
             }
             catch (Exception ex)
             {
@@ -87,15 +96,24 @@ namespace API.Controllers
             }
             catch (KeyNotFoundException ex)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, new { Message = ex.Message });
+                return Request.CreateResponse(HttpStatusCode.NotFound, new
+                {
+                    Message = ex.Message
+                });
             }
             catch (InvalidOperationException ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { Message = ex.Message });
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = ex.Message
+                });
             }
             catch (UnauthorizedAccessException ex)
             {
-                return Request.CreateResponse(HttpStatusCode.Unauthorized, new { Message = ex.Message });
+                return Request.CreateResponse(HttpStatusCode.Unauthorized, new
+                {
+                    Message = ex.Message
+                });
             }
             catch (Exception ex)
             {
@@ -134,15 +152,24 @@ namespace API.Controllers
             }
             catch (KeyNotFoundException ex)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, new { Message = ex.Message });
+                return Request.CreateResponse(HttpStatusCode.NotFound, new
+                {
+                    Message = ex.Message
+                });
             }
             catch (InvalidOperationException ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { Message = ex.Message });
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = ex.Message
+                });
             }
             catch (UnauthorizedAccessException ex)
             {
-                return Request.CreateResponse(HttpStatusCode.Unauthorized, new { Message = ex.Message });
+                return Request.CreateResponse(HttpStatusCode.Unauthorized, new
+                {
+                    Message = ex.Message
+                });
             }
             catch (Exception ex)
             {
@@ -172,7 +199,10 @@ namespace API.Controllers
 
             if (data.Amount <= 0)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { Message = "Amount must be a positive value." });
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new 
+                { 
+                    Message = "Amount must be a positive value."
+                });
             }
             try
             {
@@ -186,15 +216,75 @@ namespace API.Controllers
             }
             catch (KeyNotFoundException ex)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, new { Message = ex.Message });
+                return Request.CreateResponse(HttpStatusCode.NotFound, new
+                {
+                    Message = ex.Message
+                });
             }
             catch (UnauthorizedAccessException ex)
             {
-                return Request.CreateResponse(HttpStatusCode.Unauthorized, new { Message = ex.Message });
+                return Request.CreateResponse(HttpStatusCode.Unauthorized, new
+                {
+                    Message = ex.Message
+                });
             }
             catch (InvalidOperationException ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { Message = ex.Message });
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = ex.Message
+                });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new
+                {
+                    Message = "An unexpected error occurred.",
+                    Error = ex.Message
+                });
+            }
+        }
+
+        [Logged]
+        [HttpPost]
+        [Route("statement")]
+        public HttpResponseMessage GetAccountStatement(StatementRequestDTO statementRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+                    Message = "Validation failed.",
+                    Errors = errors
+                });
+            }
+
+            try
+            {
+                var token = Request.Headers.Authorization;
+                var statementData = StatementService.GetAccountStatementData(token.ToString(), statementRequest);
+
+                if (statementData == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "Failed to retrieve statement data.");
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, statementData);
+
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new 
+                { 
+                    Message = ex.Message
+                });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Unauthorized, new
+                {
+                    Message = ex.Message
+                });
             }
             catch (Exception ex)
             {

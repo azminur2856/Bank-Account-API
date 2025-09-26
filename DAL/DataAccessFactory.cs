@@ -36,6 +36,11 @@ namespace DAL
             return new TransactionRepo();
         }
 
+        public static ITransactionFeatures TransactionFeaturesData()
+        {
+            return new TransactionRepo();
+        }
+
         public static IRepo<AuditLog, int, bool> AuditLogData()
         {
             return new AuditLogRepo();
