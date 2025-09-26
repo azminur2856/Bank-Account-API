@@ -15,14 +15,6 @@ namespace BLL.Services
 {
     public class TransactionService
     {
-        private const decimal TRANSFER_FEE = 10;
-        private static readonly Dictionary<AccountType, decimal> MINIMUM_BALANCES = new Dictionary<AccountType, decimal>
-        {
-            { AccountType.Master, 10000m },
-            { AccountType.Savings, 500m },
-            { AccountType.Current, 1000m }
-        };
-
         public static Mapper GetMapper()
         {
             var config = new MapperConfiguration(cfg =>
@@ -34,7 +26,7 @@ namespace BLL.Services
 
         private static bool CheckMinimumBalance(Account account, decimal amount, decimal fees)
         {
-            return account.Balance - amount - fees >= MINIMUM_BALANCES[account.Type];
+            return account.Balance - amount - fees >= ServiceFactory.MinimumBalances[account.Type];
         }
 
         private static void CreateAndLogTransaction(Account sourceAccount, Account destinationAccount, decimal amount, decimal fees, TransactionType type, User performedByUser)
@@ -274,7 +266,7 @@ namespace BLL.Services
             }
             if (!CheckMinimumBalance(sourceAccount, withdrawalDTO.Amount, 0))
             {
-                throw new InvalidOperationException($"Insufficient balance. A withdrwal of {withdrawalDTO.Amount} requires a minimum balance of {MINIMUM_BALANCES[sourceAccount.Type]} after the transaction.");
+                throw new InvalidOperationException($"Insufficient balance. A withdrwal of {withdrawalDTO.Amount} requires a minimum balance of {ServiceFactory.MinimumBalances[sourceAccount.Type]} after the transaction.");
             }
 
             sourceAccount.Balance -= withdrawalDTO.Amount;
@@ -317,20 +309,20 @@ namespace BLL.Services
             {
                 throw new InvalidOperationException("Source or destination account is not active.");
             }
-            if (!CheckMinimumBalance(sourceAccount, transferDTO.Amount, TRANSFER_FEE))
+            if (!CheckMinimumBalance(sourceAccount, transferDTO.Amount, ServiceFactory.TransferFee))
             {
-                throw new InvalidOperationException($"Insufficient balance. A transfer of {transferDTO.Amount} with a fee of {TRANSFER_FEE} requires a minimum balance of {MINIMUM_BALANCES[sourceAccount.Type]} after the transaction.");
+                throw new InvalidOperationException($"Insufficient balance. A transfer of {transferDTO.Amount} with a fee of {ServiceFactory.TransferFee} requires a minimum balance of {ServiceFactory.MinimumBalances[sourceAccount.Type]} after the transaction.");
             }
 
-            sourceAccount.Balance -= (transferDTO.Amount + TRANSFER_FEE);
+            sourceAccount.Balance -= (transferDTO.Amount + ServiceFactory.TransferFee);
             destinationAccount.Balance += transferDTO.Amount;
-            bankMasterAccount.Balance += TRANSFER_FEE;
+            bankMasterAccount.Balance += ServiceFactory.TransferFee;
 
             var isUpdated = accountRepo.Update(sourceAccount) != null && accountRepo.Update(destinationAccount) != null && accountRepo.Update(bankMasterAccount) != null;
 
             if (isUpdated)
             {
-                CreateAndLogTransaction(sourceAccount, destinationAccount, transferDTO.Amount, TRANSFER_FEE, TransactionType.Transfer, user);
+                CreateAndLogTransaction(sourceAccount, destinationAccount, transferDTO.Amount, ServiceFactory.TransferFee, TransactionType.Transfer, user);
                 return true;
             }
             return false;

@@ -54,6 +54,7 @@
     <Compile Include="DataAccessFactory.cs" />
     <Compile Include="EF\BANKContext.cs" />
     <Compile Include="EF\Tables\Account.cs" />
+    <Compile Include="EF\Tables\AccountPolicy.cs" />
     <Compile Include="EF\Tables\Address.cs" />
     <Compile Include="EF\Tables\AuditLog.cs" />
     <Compile Include="EF\Tables\Token.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="EF\Tables\Verification.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Interfaces\IAccountFeatures.cs" />
+    <Compile Include="Interfaces\IAccountPolicyFeatures.cs" />
     <Compile Include="Interfaces\IAddressFeatures.cs" />
     <Compile Include="Interfaces\IAuditLogFeatures.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
@@ -96,8 +98,13 @@
     <Compile Include="Migrations\202509250618217_UpdateTransactionTable.Designer.cs">
       <DependentUpon>202509250618217_UpdateTransactionTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202509261735309_AddAccountPolicyTableAndSeed.cs" />
+    <Compile Include="Migrations\202509261735309_AddAccountPolicyTableAndSeed.Designer.cs">
+      <DependentUpon>202509261735309_AddAccountPolicyTableAndSeed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\AccountPolicyRepo.cs" />
     <Compile Include="Repos\AccountRepo.cs" />
     <Compile Include="Repos\AddressRepo.cs" />
     <Compile Include="Repos\AuditLogRepo.cs" />
@@ -131,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202509250618217_UpdateTransactionTable.resx">
       <DependentUpon>202509250618217_UpdateTransactionTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509261735309_AddAccountPolicyTableAndSeed.resx">
+      <DependentUpon>202509261735309_AddAccountPolicyTableAndSeed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

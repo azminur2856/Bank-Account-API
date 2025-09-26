@@ -143,7 +143,7 @@ namespace API.Controllers
         }
 
         [Logged]
-        [HttpPost]
+        [HttpPut]
         [Route("changepassword")]
         public HttpResponseMessage ChangePassword(PasswordChangeDTO pc)
         {
@@ -331,7 +331,7 @@ namespace API.Controllers
         }
 
         [Logged]
-        [HttpPost]
+        [HttpPut]
         [Route("address/update/present")]
         public HttpResponseMessage UpdatePresentAddress(AddressDTO addressDTO)
         {
@@ -446,7 +446,7 @@ namespace API.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("change-role")]
         [Role("Admin")]
         public HttpResponseMessage ChangeUserRole(RoleChangeDTO roleChange)
@@ -511,7 +511,7 @@ namespace API.Controllers
         }
 
         [Logged]
-        [HttpPost]
+        [HttpPut]
         [Route("change-status")]
         [Role("Admin", "Employee")]
         public HttpResponseMessage ChangeUserStatus(UserStatusChangeDTO statusChangeDTO)

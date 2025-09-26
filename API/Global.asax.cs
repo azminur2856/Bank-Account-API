@@ -50,7 +50,11 @@ namespace API
             // Get Bank Master Account Number from environment variables
             string bankMasterAccountNumber = Env.GetString("BANK_MASTER_ACCOUNT_NUMBER");
 
-            ServiceFactory.Init(emailSecret, smsSecret, apiBaseUrl, bankMasterAccountNumber);
+            // Get Transfer Fee from environment variables
+            string transferFeeString = Env.GetString("TRANSFER_FEE");
+            decimal transferFee = Convert.ToDecimal(transferFeeString);
+
+            ServiceFactory.Init(emailSecret, smsSecret, apiBaseUrl, bankMasterAccountNumber, transferFee);
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }

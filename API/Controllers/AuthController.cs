@@ -164,7 +164,7 @@ namespace API.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("resetpassword")]
         public HttpResponseMessage ResetPassword(PasswordResetDTO prd)
         {

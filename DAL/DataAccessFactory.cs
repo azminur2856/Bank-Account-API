@@ -75,5 +75,10 @@ namespace DAL
         {
             return new AddressRepo();
         }
+
+        public static IAccountPolicyFeatures AccountPolicyFeaturesData()
+        {
+            return new AccountPolicyRepo();
+        }
     }
 }
