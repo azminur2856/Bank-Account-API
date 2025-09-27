@@ -595,5 +595,48 @@ namespace API.Controllers
                 });
             }
         }
+
+        [Logged]
+        [HttpGet]
+        [Route("profile")]
+        public HttpResponseMessage GetUserProfile()
+        {
+            try
+            {
+                var header = Request.Headers.Authorization;
+                var profileData = UserService.GetProfileDetails(header.ToString());
+
+                if (profileData == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError, new
+                    {
+                        Message = "Failed to retrieve profile data."
+                    });
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, profileData);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new
+                {
+                    Message = ex.Message
+                });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Unauthorized, new
+                {
+                    Message = ex.Message
+                });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new
+                {
+                    Message = "An unexpected error occurred while retrieving user profile.",
+                    Error = ex.Message
+                });
+            }
+        }
     }
 }

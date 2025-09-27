@@ -20,6 +20,9 @@ namespace BLL.Services
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<User, UserDTO>().ReverseMap();
+                cfg.CreateMap<User, UserAddressesAccountsDTO>().ReverseMap();
+                cfg.CreateMap<Address, AddressDTO>().ReverseMap();
+                cfg.CreateMap<Account, AccountDTO>().ReverseMap();
             });
             return new Mapper(config);
         }
@@ -261,6 +264,29 @@ namespace BLL.Services
                 AuditLogService.LogActivity(auditLog);
             }
             return isUpdated;
+        }
+
+        public static UserAddressesAccountsDTO GetProfileDetails(string tokenKey)
+        {
+            var token = DataAccessFactory.TokenData().Get(tokenKey);
+            if (token == null || token.ExpireAt != null)
+            {
+                throw new UnauthorizedAccessException("Invalid or expired token.");
+            }
+
+            var user = DataAccessFactory.UserData().Get(token.UserId);
+            if (user == null)
+            {
+                throw new KeyNotFoundException("User not found.");
+            }
+            var userProfile = GetMapper().Map<UserAddressesAccountsDTO>(user);
+            
+            userProfile.Addresses = GetMapper().Map<List<AddressDTO>>(DataAccessFactory.AddressFeaturesData().GetByUserId(user.UserId));
+            userProfile.Accounts = GetMapper().Map<List<AccountDTO>>(DataAccessFactory.AccountFeaturesData().GetByUserId(user.UserId));
+
+            userProfile.PasswordHash = null;
+
+            return userProfile;
         }
     }
 }

@@ -87,6 +87,7 @@
     <Compile Include="DTOs\TransactionDTO.cs" />
     <Compile Include="DTOs\TransferDTO.cs" />
     <Compile Include="DTOs\UserAddressDTO.cs" />
+    <Compile Include="DTOs\UserAddressesAccountsDTO.cs" />
     <Compile Include="DTOs\UserStatusChangeDTO.cs" />
     <Compile Include="DTOs\WithdrawalDTO.cs" />
     <Compile Include="Interfaces\IEmailService.cs" />
